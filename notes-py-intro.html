@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Intro. to Python</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+
+   <table width="100%" border="0"> 
+      <tr>
+         <td width="20%">&nbsp;</td>
+         <td align="center" width="60%">
+            <em><font face="Tahoma, Verdana, Helvetica, sans-serif" color="#336600" size="-1">
+            Notes prepared by D. Hogan</font>
+         </em></td>
+         <td align="right" width="20%">&nbsp;</td>
+      </tr>
+   </table>
+   <hr>
+   <h1 align="center"><font color="#990099">Intro. to Python</font>
+   </h1>
+<p align="right"><font size="-1">Last Modified 
+<!-- #BeginDate format:Am2 -->9/14/16<!-- #EndDate --></font></p>
+  <p>These notes are specifically designed to follow the Excel lectures in CS 100 and assume a background in that, HTML, and some conceptual fundamentals from earlier in the course.</p>
+<p align="center"><font size="1">
+    <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+    <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#beyond">What's Next</a>
+</font></p>
+<hr>
+<h2><font color="#990099"><a name="intro"></a>Background and Getting Started</font></h2>
+<p>We turn now to Python, which is a general-purpose programming language in its own right. We can use Python to do very simple calculations, but we can also use Python to build very robust, large software. The language is among the top programming languages used today. In this course, we'll look at some of its features, really focusing on ideas that are common to many languages. In a short time, both because of the nature of Python and because of what we've already covered in this course, we'll be able to gain exposure to lots of important programming concepts.</p>
+<p>Recall when we talked about HTML needing an <strong>interpreter</strong>, i.e. a program that can read and execute HTML code (the browser in that case). The same is true for Python. But, more generally speaking about programming languages, it falls into the second of these two categories:</p>
+<ul>
+  <li><strong>compiled languages</strong>: those where programmers write code and run it through a program that checks its syntax and generates an executable program</li>
+  <li><strong>interpreted languages</strong>: those where no advance syntax check is done, but instead the language needs an interpreter to run code; errors are handled on the fly (as best as the system can)</li>
+</ul>
+<p>Software for working in Python is <a href="https://www.python.org">available for free</a> if you want to install it on your own machine. (It's often pre-installed on Mac OS X these days.) It's installed in our lab already, so you don't need to do anything to meet your course requirements. These are various in-browser Python intepreters you can use too.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="modes"></a>Modes and Starting the Interpreter</font></h2>
+<p>There are two (for our purposes, anyhow) different ways we can think of using Python:</p>
+<ul>
+  <li>In interactive mode, where we use Python sort of like a calculator. Once we start Python interactive mode, we can give it commands and it will respond. This is how we'll start today, to get a feel for the language.</li>
+  <li>By writing code in a separate file and running that file through the Python interpreter. This is more like what we did with HTML and how we would write software we intend to run many times. </li>
+</ul>
+<p>So then, in either case, we'll be operating in a command prompt environment. For now, to start the Python interpeter...</p>
+<ol>
+  <li>First, get to a command prompt environment:
+    <ul>
+      <li>On Mac OS, go to <strong>Macintosh HD</strong>, look for <strong>Applications</strong>, then <strong>Utilities</strong>, then open <strong>Terminal</strong>. Or, search for <strong>Terminal </strong>in Spotlight. (I recommend right-clicking it in the Dock and selecting the <strong>Keep in Dock</strong> option.)</li>
+      <li>On Windows, search for <strong>Command Prompt</strong> in the program search. (Or go to <strong>Start &gt; Run </strong>and enter &quot;cmd.&quot;)</li>
+    </ul>
+  <li>Type the command <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace"><strong>python</strong></font> and hit enter. </li>
+</ol>
+
+<p>After this, you'll see some information, followed by <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace">&gt;&gt;&gt;</font>. It is after the <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace">&gt;&gt;&gt;</font> prompt that you enter commands and then press &quot;enter.&quot; That produces a result and another <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace">&gt;&gt;&gt;</font> prompt where you may enter additional commands.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="vars"></a>Variables, Take 1</font></h2>
+<p>As in algebra, we can use <strong>variables</strong> to represent quantities abstractly, whether we know their values or we don't. Variables can hold different types of data, but today, we're using Python like a calculator, so let's work just with variables holding numbers. </p>
+<p>The key thing you need to know now is how variable names look. As will generalize to other programming languages as well,</p>
+<ul>
+  <li>Variable names start with letters</li>
+  <li>Variable names may <strong>NOT </strong>contain spaces</li>
+  <li>Variable names may include more letters or digits or underscores</li>
+  <li>Variable names may <strong>NOT </strong>contain any special characters other than underscores</li>
+</ul>
+<p>Here are some examples:</p>
+<table border="1" cellspacing="0" cellpadding="3" align="center">
+  <tbody>
+    <tr>
+      <th scope="col">Valid</th>
+      <th scope="col">Not Valid</th>
+    </tr>
+    <tr>
+      <td style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace"><p>a<br>
+        a2<br>
+      length<br>
+      age<br>
+      myVariable<br>
+      numberOfStudents<br>
+      number_of_students
+      </p></td>
+      <td style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace"><p>2<br>
+        a 2<br>
+        length/count<br>
+        %OfEarnings<br>
+        2nd_value<br>
+        number of students        <br>
+      </p></td>
+    </tr>
+  </tbody>
+</table>
+<p>Convention is that variables names start with lowercase letters and either use capital letters or underscores to indicate new &quot;words&quot; within, as you see in the last three valid examples.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="ops"></a>Operators</font></h2>
+<p>There are three kinds of operators that are important. You encountered two of these three groups in Excel, and for comparison, I'll include the Excel equivalents too. We'll look at each of the groups. </p>
+<h3><font color="#990099">Arithmetic</font></h3>
+<p>The (binary) arithmetic operators are those which take two numeric inputs and compute an output. The result is another number. Here are the arithmetic operators:</p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>Python Operator</th>
+    <th>Excel Operator</th>
+    <th>Python Example Arithmetic Expression</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">+</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">+</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">a + b</font></td>
+    <td style="text-align: center">addition</td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">-</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">-</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">curYear - yearBorn</font></td>
+    <td style="text-align: center">subtraction</td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">*</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">*</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">length*width</font></td>
+    <td style="text-align: center">multiplication</td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">/</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">/</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">total/count</font></td>
+    <td style="text-align: center">division</td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">**</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">^</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">base**exponent</font></td>
+    <td style="text-align: center">exponentiation/power</td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">%</font></td>
+    <td align="center" style="text-align: center">N/A<br><font size="1">(use a function)</font></td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">changeDue%25</font></td>
+    <td style="text-align: center">modulus/remainder</td>
+  </tr>
+</table>
+<p><font size="1">(Note that for division, <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace">//</font> is also defined. This is for dividing integers by integers and wanting a whole-number quotient.)</font></p>
+<p>&nbsp;</p>
+<h3><font color="#990099">Relational Operators (or Boolean Operators)</font></h3>
+<p>The relational operators are used to compare two numeric inputs. The result is either <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace">True</font> or <font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace">False</font>. As with Excel, we'll use these in forming the conditions for<font face="Consolas, Andale Mono, Lucida Console, Lucida Sans Typewriter, Monaco, Courier New, monospace"> if</font> statements. Here are the relational operators:</p>
+<table border="1" cellspacing="1" cellpadding="3">
+  <tr>
+    <th>Python Operator</th>
+    <th>Excel Operator</th>
+    <th>Python Example Boolean Expression</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <td style="text-align: center">&gt;</td>
+    <td style="text-align: center">&gt;</td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">a &gt; 5</font></td>
+    <td style="text-align: center">greater than</td>
+  </tr>
+  <tr>
+    <td style="text-align: center">&gt;=</td>
+    <td style="text-align: center">&gt;=</td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">reading &gt;= threshold</font></td>
+    <td style="text-align: center">greater than or equal to</td>
+  </tr>
+  <tr>
+    <td style="text-align: center">&lt;</td>
+    <td style="text-align: center">&lt;</td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">input &lt; 0</font></td>
+    <td style="text-align: center">less than</td>
+  </tr>
+  <tr>
+    <td style="text-align: center">&lt;=</td>
+    <td style="text-align: center">&lt;=</td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">input &lt;= 0</font></td>
+    <td style="text-align: center">less than or equal to</td>
+  </tr>
+  <tr>
+    <td style="text-align: center">==</td>
+    <td style="text-align: center">=</td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">value == 33</font></td>
+    <td style="text-align: center">equal to</td>
+  </tr>
+  <tr>
+    <td style="text-align: center">!=</td>
+    <td style="text-align: center">&lt;&gt;</td>
+    <td style="text-align: center"><font face="Courier New, Courier, mono">input != 1</font></td>
+    <td style="text-align: center">not equal to </td>
+  </tr>
+</table>
+<p>Pay special attention to equality. A single = means something different. </p>
+<p>&nbsp;</p>
+<h3><font color="#990099">Assignment</font></h3>
+<p>The <strong>assignment operator</strong> is new to you. It is <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">=</span>. It is used as follows:</p>
+<p align="center">&lt;variable name&gt; <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">=</span> &lt;arithmetic expression&gt;</p>
+<p>This is a rather important idea, so, on to the next section...</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="asgn"></a>Variables, Take 2, and Assignment</font></h2>
+<p>Let's combine the ideas of interactive mode Python, arithmetic operators, and variables now. </p>
+<p>First, you can simply enter arithmetic expressions after prompts to compute the results, just like using a calculator. Here are some examples:</p>
+<blockquote><pre>>>> 1 + 2
+3
+>>> 300 - 3
+297
+>>> 92%5
+2
+>>> 2**5
+32</pre></blockquote>
+<p>This works, but the results are forgotten as soon as we move on to the next calculation. We'd like to use variables and the assignment operator to store values. Here's how it works:</p>
+<ol>
+  <li>Type the name you want to use for a variable (<em>exactly</em> <em>one </em>variable name)</li>
+  <li>Type the assignment operator <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">=</span></li>
+  <li>Type the value you want to store in the variable or an arithmetic expression to compute it</li>
+</ol>
+<p>Here a few examples:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt; a = 5<br>&gt;&gt;&gt; b = 1 + 2<br>&gt;&gt;&gt; c = 2**5</pre>
+</blockquote>
+<p>What happens is that the values are <strong>stored</strong>, rather than being displayed. As long as we don't close the terminal window, they will be remembered. To recall the value, of a variable, simply type its name at a prompt. So, we could recall the value of those three variables we defined:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt; a<br>5<br>&gt;&gt;&gt; b<br>3<br>&gt;&gt;&gt; c<br>32</pre>
+</blockquote>
+<p>A lot of  power lies in the fact that we can use values we've computed in other calculations. Continuing from above, we could do as follows:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt; d = c + 1<br>&gt;&gt;&gt; d<br>33<br>&gt;&gt;&gt; b = b*10<br>&gt;&gt;&gt; b<br>30<br>&gt;&gt;&gt; b = b*10<br>&gt;&gt;&gt; b<br>300</pre>
+</blockquote>
+<p>Notice that the system is substituting the last stored value of a variable on the right hand side of the assignment operator, so we can write things like <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">b = b*10</span>. It is important to read the assignment operator as <strong>"gets the value"</strong> rather than "equals." Something like <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">b = b*10</span> would make no sense if it were an algebraic equation, but assignment statements are <strong>not<strong> equations!</strong></strong></p>
+<p><strong>Exercise:</strong> What is the value of the variable after  each step of the following:</p>
+<blockquote>
+  <pre>>>> count = 0
+>>> count = count + 1
+>>> count = count + 1
+>>> sum = 0
+>>> sum = sum + 7
+>>> sum = sum + 3
+>>> average = sum/count</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>One More Example</strong>: In our first Excel lecture, we derived the following formula that we put in cell C4:</p>
+<p style="text-align: center; font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace;">=3.14159*(B4^2)*A4 </p>
+<p>Note that in Excel, we didn't  say <em>where</em> we were storing the results of calculations, because that was always the cell where we wrote the formula. In some sense, we were storing the result in C4, so perhaps we could think of the above like:</p>
+<p style="text-align: center; font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace;">C4 = 3.14159*(B4^2)*A4 </p>
+<p>Translating to Python and giving some values to similarly-named variables:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt; b4 = 2<br>&gt;&gt;&gt; a4 = 10<br>&gt;&gt;&gt; c4 = 3.14159*(b4**2)*a4</pre>
+</blockquote>
+<p>But, even better, we can use more descriptive names in Python:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt; pi = 3.14159<br>&gt;&gt;&gt; radius = 2<br>&gt;&gt;&gt; height = 10<br>&gt;&gt;&gt; volume = 3.14159*(radius**2)*height</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="print"></a>Output (Print) Statements </font></h2>
+<p>As we work toward the idea of using Python as a general purpose programming language and not just a calculator, we need the idea of <strong>output</strong>, or displaying information to the user. Perhaps that information is a message (all text). Perhaps it's the result of a calculation. Perhaps it's both, such as a labeled result of a calculation.</p>
+<p>In any case, the simplest way to do this is via the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace"><strong>print</strong></span> function. Calling a function in Python is similar to calling a function in Excel. Namely, you must provide the name of the function, then give it an argument or arguments in parentheses afterward. For our purposes, these are the kinds of inputs the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace"><strong>print</strong></span> function can take:</p>
+<ul>
+  <li>Text in quotes (called a <strong>string</strong>)</li>
+  <li>A variable name, where what is displayed is the name of that variable</li>
+  <li>Any number of the above with commas between.</li>
+</ul>
+<p>Here's an example interaction that just displays text:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt;&gt; print(&quot;hello&quot;)<br>hello</pre>
+</blockquote>
+<p>Here's another example that might follow the volume calculation from earlier:</p>
+<blockquote>
+  <pre>&gt;&gt;&gt; print(&quot;Radius in m: &quot;, radius)<br>Radius in m:  2<br>&gt;&gt;&gt; print(&quot;Height in m: &quot;, height)<br>Height in m:  10<br>&gt;&gt;&gt; print(&quot;Volume in cubic meters: &quot;, volume)<br>Volume in cubic meters:  125.6636</pre>
+</blockquote>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="if"></a>If Statements</font></h2>
+<p>Recall how we studied the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span> function in Excel last week:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>condition<font color="#0000FF"><b>,</b></font> value_if_true<font color="#0000FF"><b>,</b></font> value_if_false<strong><font color="#0000FF">)</font></strong></font></p>
+<p>This is one realization of the important idea of making decisions in programming. In most programming languages, though, instead of thinking of a value we compute when the condition is true or false, we simply have statements. So far, in Python, that means either assignment statements or <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">print</span> statements (calls to the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">print</span> function).</p>
+<p>Here's the general form of the equivalent construct in Python:</p>
+<blockquote>
+  <pre><strong><font color="#0000FF">if</font></strong> condition<strong><font color="#0000FF">:</font></strong>
+   statement(s) to execute if true
+<strong><font color="#0000FF">else:</font></strong>
+   statement(s) to execute if false</pre></blockquote>
+<p>Recall our Excel example:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>A6&gt;=3.6<font color="#0000FF"><b>,</b></font> <font face="Courier New, Courier, mono">&quot;Made Dean's List&quot;</font><font color="#0000FF"><b>,</b></font> <font face="Courier New, Courier, mono"><font color="#FF6600"><strong>&quot;No&quot;</strong></font></font><strong><font color="#0000FF">)</font></strong></font></p>
+<p>We might implement this in Python as follows:</p>
+<blockquote>
+  <pre>if a6 &gt;= 3.6:
+   print(&quot;Made Dean's List&quot;)
+else:
+   print(&quot;No&quot;)</pre>
+</blockquote>
+<p>Or, better:</p>
+<blockquote>
+  <pre>if gpa &gt;= 3.6:<strong><font color="#0000FF">
+</font></strong>   print(&quot;You made the Dean's List&quot;)
+<strong><font color="#0000FF"></font></strong>else:
+   print(&quot;Sorry, you didn't make the Dean's List&quot;)</pre>
+</blockquote>
+<p>Here's another example: </p>
+<blockquote>
+  <pre>if a % 2 == 0:<strong><font color="#0000FF"></font></strong>
+   b = a**2
+<strong><font color="#0000FF"></font></strong>else:
+   b = a + 1</pre>
+</blockquote>
+<p>Here's yet another example: </p>
+<blockquote>
+  <pre>if hoursWorked &gt;= 40:<strong><font color="#0000FF">
+  </font></strong> overtimeHours = hoursWorked - 40
+   overtimePay = hourlyWage*overtimeHours*1.5
+   pay = hourlyWage*hoursWorked + overtimePay
+<strong><font color="#0000FF"></font></strong>else:
+   pay = hourlyWage*hoursWorked
+</pre>
+</blockquote>
+<p>Notice two important things in all of these examples:</p>
+
+<ul>
+  <li>There is a colon at the end of the <strong><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span></strong> and <strong><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">else</span></strong> lines.</li>
+  <li>The statement(s) executed in each case must be indented. I recommend three or four spaces. Whichever you choose, you must be consistent. </li>
+</ul>
+<p>Because an <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span> statement uses multiple lines, you'll notice that in the interactive mode, you must hit &quot;enter&quot; twice after entering the last line.</p>
+<p>Finally, note that it's entirely possible to omit the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">else</span> clause entirely, e.g. : </p>
+<blockquote>
+  <pre>if gpa &gt;= 3.6:
+   print(&quot;Congratulations, you made the Dean's List&quot;)</pre>
+</blockquote>
+<p><font size="1">There's much more we can do with this idea, but for now, the above is all you need to know. Note that there is also the idea of one or more "else if" clauses, using the keyword <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">elif</span>. The idea of nesting if/else blocks like we did with function calls in the Excel example works in Python too.</font> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="for"></a>Simple Loops</font></h2>
+<p>As a final idea in our introduction to Python, consider the notion that you may want to do the same thing (or a similar thing) several times in a row. This is the notion of <strong>repetition</strong> in programming, and, certainly, you've seen several applications of it informally in our conceptual discussions. Repetition is something we can finally realize via code, and we do that via something called a <strong>loop</strong>. </p>
+<p>The simplest kind of loop is called a <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop, and we'll look at in the case of counting. We need some variable called a <strong>loop control variable </strong>or <strong>LCV</strong>, and it really functions as a counter. Here's a general form:</p>
+<blockquote>
+  <pre><strong><font color="#0000FF">for</font></strong> i in <strong><font color="#0000FF">range(</font></strong>start_value<strong><font color="#0000FF">,</font></strong> one_after_stop_value<strong><font color="#0000FF">,</font></strong> step_value<strong><font color="#0000FF">):</font></strong>
+   statement(s) to be repeated
+<strong><font color="#0000FF"></font></strong></pre>
+</blockquote>
+<p>If you simply want to do something <em>n</em> times, you could do the following:</p>
+<blockquote>
+  <pre><strong><font color="#0000FF">for</font></strong> i in <strong><font color="#0000FF">range(0</font></strong><strong><font color="#0000FF">,</font></strong> n<strong><font color="#0000FF">,</font></strong> <strong><font color="#0000FF">1):</font></strong>
+   statement(s) to be repeated</pre>
+  <br>
+</blockquote>
+<p>Here's an example of printing the same message 5 times: </p>
+<blockquote>
+  <pre>for i in range(0, 5, 1):<strong><font color="#0000FF"></font></strong>
+   print(&quot;hello&quot;)</pre>
+</blockquote>
+<p>Here it is 10 times:</p>
+<blockquote>
+  <pre>for i in range(0, 10, 1):<strong><font color="#0000FF"></font></strong>
+   print(&quot;hello&quot;)</pre>
+</blockquote>
+<p>But, the power lies in leveraging the LCV. Here's how we can count from 1 to 10:</p>
+<blockquote>
+  <pre>for i in range(1, 11, 1):<strong><font color="#0000FF"></font></strong>
+   print(i)</pre>
+</blockquote>
+<p>Or maybe we could print out the first several odd numbers:</p>
+<blockquote>
+  <pre>for i in range(1, 30, 2):<strong><font color="#0000FF"></font></strong>
+   print(i)</pre>
+</blockquote>
+<p>Or we could do a calculation like in this example:</p>
+<blockquote>
+  <pre>for i in range(1, 11, 1):<strong><font color="#0000FF"></font></strong>
+   print(i, 2**i)</pre>
+</blockquote>
+<p>That's a nice start. </p>
+<p>Notice, again, the indentation and the color at the end of the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> line. These are required, just as with <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span> statements.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+
+<hr>
+<h2><font color="#990099"><a name="beyond"></a>From here...</font></h2>
+<p>Next Monday, you'll do a lab practicing the skills you've learned.</p>
+<p>We'll then continue with learning about Python, moving away from the interactive mode and into standalone programs. We'll scratch the surface of many other important programming concepts in the process. </p>
+<p>Finally, while this course is not to teach you as much about programming as a full-semester course on programming would, there are various books dedicated to learning how to program in Python. The best one I've found so far is John Zelle's<em> Python Programming: An Introduction to Computer Science. </em>This book goes well beyond what we're doing in this course, but I recommend it if you're looking for another resource or are looking to teach yourself more after we complete our Python lessons. </p>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#intro">Getting Started</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#modes">Modes</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#vars">Variables</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ops">Operators</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#asgn">Assignment Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#print">Print Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">If Statements</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#for">For Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a></font></p>
+</body>
+</html>
