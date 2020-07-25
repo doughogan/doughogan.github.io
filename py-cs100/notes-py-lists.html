@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Lists in Python Code</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+
+   <table width="100%" border="0"> 
+      <tr>
+         <td width="20%">&nbsp;</td>
+         <td align="center" width="60%">
+            <em><font face="Tahoma, Verdana, Helvetica, sans-serif" color="#336600" size="-1">
+            Notes prepared by D. Hogan</font>
+         </em></td>
+         <td align="right" width="20%">&nbsp;</td>
+      </tr>
+   </table>
+   <hr>
+   <h1 align="center"><font color="#990099">A Taste of Lists in Python Code</font></h1>
+<p align="right"><font size="-1">Last Modified 
+<!-- #BeginDate format:Am2 -->9/29/16<!-- #EndDate --></font></p>
+  <p>These notes are  designed to follow the <a href="notes-py-intro.html">
+     introductory Python notes</a> and <a href="notes-py-part2.html">second set of Python notes</a> as they fit in the CS 100 course with conceptual discussions of algorithms. It is not intended to be a complete treatment of the topic. </p>
+<p align="center"><font size="1">
+    <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+    <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#code">Code Samples</a>
+</font></p>
+<hr>
+<h2><font color="#990099"><a name="concept"></a>The Concept of Lists</font></h2>
+<p>In many of the algorithms we've discussed conceptually, we have been processing collections of data. When we looked at implementing some of them in Python, we simply input values and processed them on the fly. Certainly, in practice, we store data in some container and process the data separately from collecting the data. </p>
+<p>There are various types of containers we can use to store data, abstractly called <strong>data structures</strong>. The simplest is a <strong>list </strong>or <strong>array</strong>, which stores values in a linear order. What we'll look at is called a list in Python, but it's really much closer to the concept of an array in many other languages. (As such, you can use the terms interchangeably in this course.) There are plenty of other data structures that organize data in different ways; the binary search tree is one such example. </p>
+<p>We can create a list of known values in Python with the assignment statement and by giving a comma-separated list of values. Here's a general form:</p>
+<blockquote>
+  <pre>listName <strong><font color="#0000FF">= [</font></strong>first value<strong><font color="#0000FF">, </font></strong> second value<strong><font color="#0000FF">, </font></strong>more values... <strong><font color="#0000FF">]</font></strong></pre></blockquote>
+<p>Here's an example:</p>
+<blockquote>
+  <pre>values = [12, 5, 13, -4, 2]
+</pre>
+</blockquote>
+<p>Here's another example:</p>
+<blockquote>
+  <pre>inputs = [77, 91, 90, 34, 100, 99, 32, 13, 25]
+</pre>
+</blockquote>
+<p>Python keeps track of the size of lists. You can use the function <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">len()</span>, with the name of a list in the parentheses, to get its length. So, <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">len(inputs)</span> is 9 and <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">len(values)</span> is 5. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a></font></p>
+<hr>
+<h2><font color="#990099"><a name="indexing"></a>Indexing</font></h2>
+<p>Each element in a list has a specific location. In Python, <strong>indexing starts at 0</strong>, not 1 as you might expect from non-coding experiences. So, for the array <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">inputs</span> above, we might think of it as follows:</p>
+<blockquote>
+  <table border="1" cellspacing="0" cellpadding="3">
+    <tbody>
+      <tr>
+        <th scope="row">index</th>
+        <td>0</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <th scope="row">value</th>
+        <td>77</td>
+        <td>91</td>
+        <td>90</td>
+        <td>34</td>
+        <td>100</td>
+        <td>99</td>
+        <td>32</td>
+        <td>13</td>
+        <td>25</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+<p>We can refer to elements by giving the name of the list, followed by the index of the value desired in brackets. For example, <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">inputs[0]</span> refers to the first value, 77, and <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">inputs[5]</span> refers to the value at position 5, or 99. </p>
+<p>Note that there are 9 values in this list, but the largest possible index is one smaller, or 8. We can use any <em>integer</em> value between 0 and one fewer than the length of a list as an index, and this could include variables.</p>
+<p><strong>Exercise: </strong>How do we refer to the value 13 if we want to access it from the list?</p>
+<p>&nbsp;</p>
+<p>We can use this mode of referencing elements of lists anywhere in code like we would use an ordinary variable. (Note that, in general, we operate on<em> elements</em> of lists, not the lists themselves.) Here are a few examples:</p>
+<ul>
+  <li><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">sumOfFirst2 = inputs[0] + inputs[1]</span></li>
+  <li><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">inputs[0] = inputs[0]*10</span></li>
+  <li><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">averageOfLast3 = (inputs[6] + inputs[7] + inputs[8])/3</span></li>
+  <li><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">desiredLoc = 4<br>
+  print(&quot;The value at position&quot; , desiredLoc, &quot; is &quot;, inputs[desiredLoc])</span> <br>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Exercise: </strong>Write a line of code to set the first element of <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">inputs</span> to one more than the last element of <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">values</span> from above. (Remember, <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">values</span> has 5 elements.)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="walk"></a>Traversing Lists with Loops</font></h2>
+<p>Now that we know the basics of lists, let's look at some more interesting operations. Nearly every interesting thing we can do with lists involves loops. </p>
+<p>One of the first things we might want to do with a list is just see what all data is in it. We call this <strong>traversing</strong> or <strong>walking</strong> the list.</p>
+<p>Here's a block of code that defines a list and then displays every value in that list:</p>
+<blockquote>
+  <pre>
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+
+for i in range(0, len(data), 1):                  
+   print(data[i])</pre></blockquote>
+<p>Notice that we use as the loop control variable (LCV) the same variable as we use for the index of the current element of the array. Also, notice that since we know how many elements are in this list in advance, this is a simple  <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop.</p>
+<p>Note that, in addition to the simple (counter-controlled) <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop, many languages are now incorporating a kind of   <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop that eliminates the counter and replaces it with a placeholder for the current element of the list. (This is usually referred to as a &quot;for-each&quot; loop.) In Python, it makes the above list traversal very simple:</p>
+<blockquote>
+  <pre>
+for val in data:                  
+   print(val)</pre>
+</blockquote>
+<p>Notice that while this code is simple, it takes the idea of counting away and we may want that for other things, so it's useful to be familiar with both approaches. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="max_linsearch"></a>Revisiting the Finding Max and Linear Search Algorithms</font></h2>
+<h3><font color="#990099">Finding Maximum</font></h3>
+<p>We've studied the idea of finding an extreme value in a list and looked at code to find the max, inputting one value at a time. Now, let's look at code to find the max in a list. </p>
+<p>The code is very similar to <a href="notes-py-part2.html#sum_count_max">what we saw before</a>, but with a few changes:</p>
+<ul>
+  <li>We don't need to collect inputs; they're already in a list.</li>
+  <li>Instead of tracking the maximum <em>value</em>, we'll track its<em> index</em>. So we set a variable for this to 0 initially, because we always assume the first value is the max.</li>
+</ul>
+<p>Here's the code:</p>
+<blockquote>
+  <pre># Sample list 
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+
+# Initially assume max is at first position
+maxIndex = 0
+
+for i in range(1, len(data), 1):                  # test data points
+   if data[i] > data[maxIndex]:                   # check if current point beats the max...
+      maxIndex = i                                # ...and make it the new max if it does
+   print("Maximum so far: ", data[maxIndex])
+
+print("Maximum found: ", data[maxIndex])</pre>
+</blockquote>
+<p>The <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">print</span> statement inside the loop is unnecessary; it is only there for you to see what's happening if you run the code and study, but it doesn't belong in a clean implementation of this algorithm.</p>
+<p>Let's also look at a version of the above code that uses the &quot;for-each&quot; loop structure. This implementation just finds the max, but does <em>not</em> track its location (and redundantly compares the first element to itself):</p>
+<blockquote>
+  <pre># Sample list 
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+
+# Initially assume max is at first position
+max = data[0]
+
+# Note that this implementation of the loop redundantly compares the first value to itself
+for val in data:                                  # test data points
+   if val > max:                                  # check if current point beats the max...
+      max = val                                   # ...and make it the new max if it does
+   print("Maximum so far: ", max)
+
+print("Maximum found: ", max)</pre>
+</blockquote>
+  <p>If we really want to get the location of the max with a &quot;for-each&quot; loop, we need another counter. So, in reality, the initial implementation is the cleanest. Nevertheless, here's that code:</p>
+<blockquote>
+  <pre># Sample list
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+
+# Initially assume max is at first position and start a counter
+maxIndex = 0
+i = 0
+
+# Note that this implementation of the loop redundantly compares the first value to itself
+for val in data:                                  # test data points
+   if val > data[maxIndex]:                       # check if current point beats the max...
+      maxIndex = i                                # ...and make it the new max if it does
+   i = i + 1
+   print("Maximum so far: ", data[maxIndex])
+
+print("Maximum found: ", data[maxIndex])</pre>
+</blockquote>
+<blockquote>&nbsp;</blockquote>
+<h3><font color="#990099">Linear Search</font></h3>
+<p>Now, let's look at linear search. Again, it is similar to <a href="notes-py-part2.html#apps">what we saw before</a>, using a <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop and Boolean flag. We add a variable to track the location of the key and make the code more robust in reporting the results.</p>
+<p>Here's the code:</p>
+<blockquote>
+  <pre># Sample list and sample key
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+key = 35
+
+# Start looking from first element in the list, initially assuming key isn't found
+position = 0
+found = False
+
+# Look for key until it's found or we run out of data
+while not found and position < len(data):
+   cur = data[position]
+   print("Comparing ", cur, " to ", key, "...")
+   if cur == key:                                        # found key -> remember we're done
+      found = True
+      print("...found!")
+   else:                                                 # didn't find key -> keep looking
+      position = position + 1
+      print("...not found")
+
+# Completing the loops means we found the key or we ran out of data...
+if found:                                               # found key
+   print(key, " is in position ", position, "in data")
+else:                                                   # ran out of data
+   print(key, " is not in data")</pre>
+</blockquote>
+<blockquote>&nbsp;</blockquote>
+<p>Again, the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">print</span> statements are just for you to understand the algorithm in running the code. Here's a cleaner version witohut them:</p>
+<blockquote>
+  <pre># Sample list and sample key
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+key = 35
+
+# Start looking from first element in the list, initially assuming key isn't found
+position = 0
+found = False
+
+# Look for key until it's found or we run out of data
+while not found and position < len(data):
+   cur = data[position]
+   if cur == key:                                        # found key -> remember we're done
+      found = True
+   else:                                                 # didn't find key -> keep looking
+      position = position + 1
+
+# Completing the loops means we found the key or we ran out of data...
+if found:                                               # found key
+   print(key, " is in position ", position, "in data")
+else:                                                   # ran out of data
+   print(key, " is not in data")</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="sel_sort"></a>Selection Sort</font></h2>
+<p>Let's look at one more algorithm. We just talked about selection sort conceptually. Of course, we can implement that in Python. Here's some code:</p>
+<blockquote>
+  <pre># Sample list 
+data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+
+# Selection sort
+for bottom in range(len(data)-1, 0, -1):             # move bottom up through array
+   maxIndex = 0                                      # initially assume max is at first position
+
+   for i in range(0, bottom + 1, 1):                 # look for max up to current bottom
+      if data[i] > data[maxIndex]:                   # check if current point beats the max...
+         maxIndex = i                                # ...and make it the new max if it does
+   
+   print("Maximum this pass: ", data[maxIndex], "(positions 0 through ", bottom, ")")
+
+   temp = data[maxIndex]                             # swap max value and bottom value
+   data[maxIndex] = data[bottom]
+   data[bottom] = temp
+
+
+# Walk sorted list
+print("\nSorted list: ")                            # ('\n' prints an extra line break) 
+for val in data:                  
+   print(val)
+</pre>
+</blockquote>
+<p>Notice that we use a loop within a loop (or a <em>nested loop</em>) to do this. Indentation is really critical to reading this code! (Fortunately, Python requires it.)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="funcs"></a>A Quick Taste of User-Defined Functions</font></h2>
+<p>We've used functions in Excel, Python, and SQL, all of which were built-in. In Python and most general-purpose programming languages, it's possible to define functions ourselves. This becomes very helpful, because it helps us abstract ideas instead of writing similar code many times. It also helps us to break up large programs into manageable chunks. </p>
+<p>In the selection sort algorithm, we repeatedly need to find the index of the maximum value of part of our list. We could move this to a function. Here's what that function would look like:</p>
+<blockquote>
+  <pre>
+def findMaxIndex(list, bottom):
+   maxIndex = 0                                      # initially assume max is at first position
+
+   for i in range(0, bottom + 1, 1):                 # look for max up to current bottom
+      if list[i] > list[maxIndex]:                   # check if current point beats the max...
+         maxIndex = i                                # ...and make it the new max if it does
+
+   return maxIndex</pre>
+</blockquote>
+<p>Instead of outputting information to the user, the function instead <em>returns</em> its result to whatever function/program called it.</p>
+<p>Here's an adaptation of the whole program to do selection sort, with the maximum function incorporated:</p>
+<blockquote>
+  <pre># Function to find maximum, requiring inputs of list, a list, and bottom, an integer that is at
+# at least 0. Function returns the position in list between index 0 and index bottom containing
+# a value that is the largest among all values in list. 
+def findMaxIndex(list, bottom):
+   maxIndex = 0                                      # initially assume max is at first position
+
+   for i in range(0, bottom + 1, 1):                 # look for max up to current bottom
+      if list[i] > list[maxIndex]:                   # check if current point beats the max...
+         maxIndex = i                                # ...and make it the new max if it does
+
+   return maxIndex
+#------------------------------------------------------------------------------------------------
+
+
+# Main program/function
+def main():
+   # Sample list 
+   data = [22, 45, 5, -1, 33, 65, 35, 29, -40]
+
+   # Selection sort
+   for bottom in range(len(data)-1, 0, -1):             # move bottom up through array
+      maxIndex = findMaxIndex(data, bottom)             # find the maximum
+   
+      print("Maximum this pass: ", data[maxIndex], "(positions 0 through ", bottom, ")")
+
+      temp = data[maxIndex]                             # swap max value and bottom value
+      data[maxIndex] = data[bottom]
+      data[bottom] = temp
+
+
+   # Walk sorted list
+   print("\nSorted list: ")
+   for val in data:                  
+      print(val)
+#------------------------------------------------------------------------------------------------
+
+
+
+# Run the main function (Python does not start execution within functions; they must be called.)
+main()
+</pre>
+</blockquote>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="closing"></a>Closing Comments</font></h2>
+<p>In the main Python lectures and this lecture, we've scratched the surface of the key ideas of a general-purpose programming language. By no means is this treatment comprehensive. In a full semester-long introduction to programming in a language like Python (instead of an intro course that blends concepts and various technologies like ours), you'd go deeper into the basics, selection (&quot;if&quot; statements and decision making), and loops, slowly practicing each. You'd also spend a good bit of time working with user-defined functions. What I've shown you above is just a taste, but there are many more issues to consider. With lists/arrays, we've seen some of the issues and jumped to some implementations, but there is more. Finally, you would also at least work with processing data from files. </p>
+<p>If you're interested in learning more about Python on your own, I once again recommend John Zelle's<em> Python Programming: An Introduction to Computer Science. </em>Switching languages, I also have a set of well-developed <a href="../../cs1/">online notes that teach all of these concepts in C++</a> (as well as in Fortran, an older, but not dead, language -- feel free to ask).</p>
+<p>&nbsp;</p>
+
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="code"></a>Code Samples</font></h2>
+<p>You can download <a href="code-samples.zip">a zipped archive of all of the code samples</a> contained in this set of notes and the other two Python lectures if you'd like to play with them as you study.</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#concept">The Concept</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#indexing">Indexing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#walk">Walking Lists</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#max_linsearch">Max and Linear Search</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sel_sort">Selection Sort</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#funcs">Taste of Functions</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#closing">Wrap Up</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#code">Code Samples</a> </font></p>
+</body>
+</html>

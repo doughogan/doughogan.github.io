@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Python, Part 2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+
+   <table width="100%" border="0"> 
+      <tr>
+         <td width="20%">&nbsp;</td>
+         <td align="center" width="60%">
+            <em><font face="Tahoma, Verdana, Helvetica, sans-serif" color="#336600" size="-1">
+            Notes prepared by D. Hogan</font>
+         </em></td>
+         <td align="right" width="20%">&nbsp;</td>
+      </tr>
+   </table>
+   <hr>
+   <h1 align="center"><font color="#990099">Python, Part II: <br>
+   Standalone Programs and More with Loops</font></h1>
+<p align="right"><font size="-1">Last Modified 
+<!-- #BeginDate format:Am2 -->9/13/16<!-- #EndDate --></font></p>
+  <p>These notes are  designed to follow the <a href="notes-py-intro.html">
+     introductory Python notes</a> as they fit in the CS 100 course
+  from last week.</p>
+<p align="center"><font size="1">
+    <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+    <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+    <a href="#beyond">What's Next</a>
+</font></p>
+<hr>
+<h2><font color="#990099"><a name="progs"></a>Standalone Programs (vs. Interactive Mode)</font></h2>
+<p>Last week, all of our uses of Python were in interactive mode. That mode is very practical for quick calculations, but Python is a powerful programming language in its own right and we can use it to create programs that stand on their own. We'll look at programs that exist in one file in this lecture. </p>
+<p>Like with HTML, use a plain text editor such as Text Edit or Notepad to write your code. Save your code with the extension <strong>py</strong>. </p>
+<p>As Python is an interpreted language, we need an interpreter to run Python programs. There's a command you enter at the command line to run your programs. To run programs, use the command <strong><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace"><font color="#0000FF">python</font></span></strong>, followed by the name of the program. </p>
+<h3><font color="#990099">Hello World!</font></h3>
+<p>It's standard practice that the first program people write in any language is the &quot;Hello World&quot; program, i.e. a program which simply displays the text &quot;Hello, World!&quot; so we'll start with that. In Python, it's quite simple. The program is just one line:</p>
+<blockquote><pre>print("Hello, World!")</pre></blockquote>
+<p>This code should be saved in a file called <strong>hello.py</strong>. To run it, we'd type this command:</p>
+<blockquote>
+  <pre>python hello.py</pre>
+</blockquote>
+<p>And the computer would display this:</p>
+<blockquote>
+  <pre>Hello, World!</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="input"></a>Getting Input from Users</font></h2>
+<p>Last week, we talked about setting the values of variables with assignment statements. Certainly, we would want to have the ability for programs to interact with users. To get information from a user in a console program, we follow what is called the <strong>prompt-then-input pattern</strong>, in other words, we first display a message to the user saying what we want (the prompt) and then wait for the user to do input. </p>
+<p>We must store our input somewhere, and Python's way of doing this looks like an assignment statement. </p>
+<p>The general form fits in one line of code and looks like this:</p>
+<blockquote>
+  <pre>receivingVariableName <font color="#0000FF"><strong>= eval(input(&quot;</strong></font>prompt goes here<font color="#0000FF"><strong>&quot;))</strong></font></pre>
+</blockquote>
+<p>For example, the following would ask the user for a number and store it in <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">num1</span>: </p>
+<blockquote>
+  <pre>num1 = eval(input(&quot;Enter a number: &quot;))</pre>
+</blockquote>
+<p>As a second example, the following would ask the user for a length and store it in <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">length</span>: </p>
+<blockquote>
+  <pre>length = eval(input(&quot;Enter the length in inches: &quot;))
+</pre>
+</blockquote>
+<p>Observe the space after the colons in my prompts; that's intentional. Otherwise, what the user types would be right beside the prompt. Also, note that it's important to be clear in your prompts. In my second example, I'm careful to include the units I'm expecting (and assuming in later calculations). </p>
+<p><strong>Class Exercise: </strong>Write a line of code to prompt a user for the width of something. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="ipo"></a>Short, Complete Programs and IPO</font></h2>
+<p>Now we have the skills to write a complete program. Programs can take many forms, but most involve these three parts:</p>
+<ul>
+  <li>Input: Collecting information from a user </li>
+  <li>Process: Doing some calculation on the input collected or transforming it in some way</li>
+  <li>Output: Reporting results back to the user</li>
+</ul>
+<p>Because of these three phases, many programs are written to follow the <strong>IPO model</strong>, where the name comes from the first letters of the three phases given. (Strictly speaking, the IPO model requires that each of these phases be distinct. That won't be possible with our limited toolkit in some later examples today though.)</p>
+<p>Here's a first example of a complete program: </p>
+<blockquote>
+  <pre>num1 = eval(input("Enter a number: "))
+num2 = eval(input("Enter another number: "))
+
+sum = num1 + num2
+
+print("The sum of your numbers: ", sum)</pre>
+</blockquote>
+<p>When it's run, it might look like this (where what the user has typed is in color): </p>
+<blockquote>
+  <pre>Enter a number: <font color="orange">2</font>
+Enter another number: <font color="orange">4</font>
+The sum of your numbers:  6</pre>
+</blockquote>
+<p><strong>Question: </strong>Can you identify the input, process, and output parts of this program? </p>
+<p>&nbsp;</p>
+<p><strong>Class Exercise: </strong>Building on my prompt example and your class exercise from above, complete this program to calculate the area of a rectangle: </p>
+<blockquote>
+  <pre>print(&quot;This program computes the area of a rectangle&quot;)<br>
+length = eval(input(&quot;Enter the length in inches: &quot;))<br><br>____________________________________________________________________<br><br><br>area = _____________________________________________<br><br><br>print(__________________________________________________)
+  </pre>
+</blockquote>
+<p><strong>Class Exercise: </strong>Say a pizza shop charges $1.25 per slice. Write a short program that asks a user how many slices he/she wants, calculate the cost, and display it. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="comments"></a>Documenting Code </font></h2>
+<p>We can add text called <strong>comments </strong>to our code that is not meant for the computer, but rather meant for ourselves and other programmers. Any text in Python that you type after typing a <strong><span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace"><font color="#0000FF">#</font></span></strong> symbol on a line is considered a comment. It is ignored by the computer, but can help you in organizing your code, can help other programmers understand your code, and can help you with maintaining programs at times other than after they're written. </p>
+<p>Here's the previous program with some organizing comments added: </p>
+<blockquote>
+  <pre># Input: Collect two numbers from the user
+num1 = eval(input("Enter a number: "))
+num2 = eval(input("Enter another number: "))
+
+# Process: Add the two inputs
+sum = num1 + num2
+
+# Output: Report the sum 
+print("The sum of your numbers: ", sum)</pre>
+</blockquote>
+<p>I'll include comments in some later examples.</p>
+<p>Here in CS 100, you don't need to write any comments to satisfy requirements (but, by all means, add them as it helps you). However, if you choose to learn more programming, it is very important to get in the habit of documenting your code with good comments while you write it. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="sum_count_max"></a>Loop Applications </font></h2>
+<p>We talked briefly about loops last week. Recall that the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop lets us do the same thing a predetermined number of times, and is controlled by a counter (or loop control variable). Recall the general form:</p>
+<blockquote>
+  <pre><strong><font color="#0000FF">for</font></strong> i in <strong><font color="#0000FF">range(</font></strong>start_value<strong><font color="#0000FF">,</font></strong> one_after_stop_value<strong><font color="#0000FF">,</font></strong> step_value<strong><font color="#0000FF">):</font></strong>
+   statement(s) to be repeated</pre>
+</blockquote>
+<p>Everything last time was just concerned with simple counting. We'll now apply the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop to a few standard important places loops are used. As you may have gathered from our conceptual activities, processing lists of information is something we do often in CS. In these examples, we'll collect one input at a time and do something with it. </p>
+<p>&nbsp;</p>
+<h3><font color="#990099">Summing Values</font></h3>
+<p>There are plenty of cases where we want to add up values.</p>
+<p>To do so, we need two variables:</p>
+<ul>
+  <li>one to hold the current number being input, which I'll call <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">cur</span></li>
+  <li>one to hold the sum we're accumulating, which I'll call <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">sum</span></li>
+</ul>
+<p>We'll simply read in a number and replace the value in <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">cur</span> after each input. </p>
+<p>Before we start doing anything, we need to give  <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">sum</span> an initial value, called <strong>initializing </strong>the variable. </p>
+<p><strong>Question: </strong>If we have added up no values, what is the sum of those values? </p>
+<p>&nbsp;</p>
+<p>We need to know how many inputs in advance. Let's say we'll read in 10 values here. We could start the loop as follows: </p>
+<blockquote>
+  <pre>for i in range(1, 11, 1)</pre>
+</blockquote>
+<p>Note that it would be equivalent to do the following, as it also counts 10 times:</p>
+<blockquote>
+  <pre>for i in range(0, 10, 1)</pre>
+  <p>&nbsp;</p>
+</blockquote>
+<p>Once we've read in an input, we add it to the existing sum. The complete code is as follows:</p>
+<blockquote>
+  <pre>sum = 0                                   # initialize sum
+
+for i in range(1, 11, 1):                 # collect and sum inputs
+   cur = eval(input(&quot;Enter a value: &quot;))
+   sum = sum + cur
+
+print(&quot;Total of inputs is: &quot;, sum)</pre>
+</blockquote>
+<p><strong>Question: </strong>Say we want to read in 100 numbers instead of just 10? What do we need to change?</p>
+<p>&nbsp;</p>
+<h3><font color="#990099">Counting Things</font></h3>
+<p>Let's say we want to read in 100 numbers and see how many are even. </p>
+<p><strong>Question: </strong>Before we've looked at any inputs to see if they're even, how many even numbers have we seen? </p>
+<p>&nbsp;</p>
+<p><strong>Question: </strong>When we divide an even number by 2, what's the remainder? How do we compute a remainder in Python?</p>
+<p>&nbsp;</p>
+<p>There's one other new issue. We've learned about  <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span> statements before. Nothing says we can't use them in the body of loops. In fact, doing so is extremely common and powerful.</p>
+<p>Putting all of this together, we get the following:</p>
+<blockquote>
+  <pre>evenCount = 0                                   # initially, no evens
+
+for i in range(0, 10, 1):                       # collect and test inputs
+   cur = eval(input("Enter a value: "))
+   if cur%2 == 0:                               # encountered an even value...
+      evenCount = evenCount + 1                 # ...so tally it
+
+print("Number of even inputs: ", evenCount)</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><font color="#990099">Finding Extreme Values</font></h3>
+<p>Recall when we discussed the idea of finding a maximum early in the term. Turning that algorithm into code is very similar to what we did above. Here's the code:</p>
+<blockquote>
+  <pre>max = eval(input("Enter a value: "))       # get first value, initially the max
+
+for i in range(0, 10, 1):                  # collect and test inputs
+   cur = eval(input("Enter a value: "))
+   if cur > max:                           # check if new input beats the max...
+      max = cur                            # ...and make it the new max if it does
+   print("Maximum so far: ", max)
+
+print("Maximum found: ", max)</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p></p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="var_types"></a>Other Variable Types: Booleans and Strings</font></h2>
+<p>It is worth taking a moment to discuss data types. There are three basic types of things we could store in a variable:</p>
+<ul>
+  <li>numbers: As per every example we've seen so far. Some applications will distinguish between whole numbers and those with decimals.</li>
+  <li>text: Letters or several letters or even digits, referred to as<strong> strings</strong>.</li>
+  <li>Boolean: Values of true or false, literally using keywords <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">True</span> and <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">False</span> in Python</li>
+</ul>
+<p>In some languages, the notion of data types comes up in every program you write and you must say the type of variables before first use them. Such languages are called strongly-typed. This is not the case in Python. The language infers the types from how variables are used. In some sense, this means you can do more with less code, but on the other hand, it puts more responsibity on the programmer. </p>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="while"></a>While Loops </font></h2>
+<p> We know about <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loops, used when we know how many times we want to do something in advance. There's a second kind of loop in Python, the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop. While you can do anything with a  <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop you can do with a <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop, it is best used for the cases when you do <em>not</em> know how many times you want the loop to do something in advance. </p>
+<p>Here's the general form:</p>
+<blockquote>
+  <pre><strong><font color="#0000FF">while</font></strong> loop test<strong><font color="#0000FF">:</font></strong>
+   statement(s) to be repeated</pre>
+</blockquote>
+<p>The loop test is a Boolean expression, as we'd use in an <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span> statement. In fact, the behavior of a while loop is similar to an <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">if</span> statement in that the body runs when the condition is true. The difference with a <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop is that the condition is checked <strong>again</strong> after the body, and if it remains true, the body runs again. </p>
+<p>To use a <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop, we nearly always must:</p>
+<ul>
+  <li>Initialize something before the loop.</li>
+  <li>Have code inside the loop that makes it possible the loop test might fail, in other words, bring the loop closer to stopping.</li>
+</ul>
+<p>Here's an example from the initial discussion of <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loops:</p>
+<blockquote>
+  <pre>for i in range(1, 11, 1):<strong><font color="#0000FF"></font></strong>
+   print(i)</pre>
+</blockquote>
+<p>While that truly is a job for a <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">for</span> loop, here's a  <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop that does the same thing:</p>
+<blockquote>
+  <pre>i = 1
+
+while i &lt; 11:<strong><font color="#0000FF"></font></strong>
+   print(i)
+   i = i + 1</pre>
+  <p>&nbsp;</p>
+</blockquote>
+<p>Here is code that does the same thing as the counting example from earlier:</p>
+<blockquote>
+  <pre>sum = 0                                   
+i = 1
+
+while i &lt; 11:               
+   cur = eval(input(&quot;Enter a value: &quot;))
+   sum = sum + cur
+   i = i + 1
+
+print(&quot;Total of inputs is: &quot;, sum)
+
+</pre>
+</blockquote>
+<p>But, I still haven't really given you a reason to care about this new kind of loop! Let's do that now. What if, instead of stopping after 10 inputs, we assume the user only cares about positive inputs? So, we could let the user enter -1 as a way of stopping. Here's how the code changes:</p>
+<blockquote>
+  <pre>sum = 0
+cur = 1
+
+while cur != -1:               
+   cur = eval(input(&quot;Enter a value or -1 to quit: &quot;))
+   sum = sum + cur
+
+print(&quot;Total of inputs is: &quot;, sum)</pre>
+</blockquote>
+<p>Note that because we need to use <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">cur</span> in the loop test, we need to initialize it to something before the loop to make the loop test true. (Admittedly, this is a bit unnatural, but there's no way to get around it in Python without repeating code and is a limitation of the language.)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="apps"></a>More Loop Applications </font></h2>
+<p>Let's look at two more  applications of loops.</p>
+<h3><font color="#990099">Mystery Code</font></h3>
+<p>Consider this block of code:</p>
+<blockquote>
+  <pre>key = 35
+
+position = 1
+found = False
+
+while not found:
+   cur = eval(input("Enter a value: "))
+   if cur == key:
+      found = True
+   else:
+      position = position + 1
+
+print(key, " is the ", position, "th value")</pre>
+</blockquote>
+<p>What does it do? (Hint: It's an algorithm we discussed conceptually earlier in the term...)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><font color="#990099">Something with a Mystery, More Literally</font></h3>
+<p>As a last example, let's look at an example which leverages the <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">while</span> loop to implement a guessing game (and, as a bonus, shows an <span style="font-family: Consolas, 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', Monaco, 'Courier New', monospace">elif</span> option for decision making in a case of three-way branching):</p>
+<blockquote>
+  <pre>mysteryNumber = 65                                               # number to guess
+
+isGameOver = False                                               # flag that's false while game
+                                                                 # is underway and flips when done
+
+while not isGameOver:                                            # let user guess values
+   cur = eval(input("Guess a number: "))                         # get a new guess
+
+   if cur == mysteryNumber:                                      # guess is right
+      print("Congratulations, you guessed the mystery number!")
+      isGameOver = True
+   elif cur > mysteryNumber:                                     # guess is too big
+      print("Sorry, too high! Try again...")
+   else:                                                         # guess is too small
+      print("Sorry, too low! Try again...")</pre>
+</blockquote>
+<p></p>
+<p>&nbsp;</p>
+<p></p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+<hr>
+<h2><font color="#990099"><a name="beyond"></a>From Here... </font></h2>
+<p>I'll talk about which (potential) direction(s) things can go from here...</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"> <a href="#progs">Standalone Programs</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#input">Input</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#ipo">IPO</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#comments">Comments</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sum_count_max">Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#var_types">Variable Types</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#while">While Loops</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#apps">More Loop Applications</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#beyond">What's Next</a> </font></p>
+</body>
+</html>
