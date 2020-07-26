@@ -1,0 +1,45 @@
+Homer
+J
+Simpson
+568-47-0008
+742 Evergreen Terrace
+Springfield, USA
+49007
+555-6528
+555-7334 
+
+Basic Checking Account
+Balance: 5.00
+
+11/08/2010
+Opening Deposit
+First Bank of Springfield
+10.00
+
+11/08/2010
+Direct Deposit - Springfield Nuclear Power Plant Payroll
+Springfield
+100.00
+
+11/09/2010
+Kwik-E-Mart
+Springfield
+20.00
+
+11/09/2010
+Barney's Bowl-a-rama
+Springfield
+10.00
+
+11/09/2010
+Moe's Tavern
+Springfield
+40.00
+
+11/10/2010
+Moe's Tavern
+Springfield
+35.00
+
+
+

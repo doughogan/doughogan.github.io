@@ -1,0 +1,30 @@
+Homer
+J
+Simpson
+568-47-0008
+742 Evergreen Terrace
+Springfield, USA
+49007
+555-6528
+555-7334 
+
+Savings Account
+Balance: 35.00
+
+11/01/2000
+Opening Deposit
+First Bank of Springfield Branch 
+100.00
+
+12/24/2000
+Withdrawal
+First Bank of Springfield Branch
+25.00
+
+11/08/2010
+Withdrawal
+Kwik-E-Mart ATM
+40.00
+
+
+
