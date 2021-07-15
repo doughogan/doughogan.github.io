@@ -1,0 +1,75 @@
+= Kafka Fundamentals Brain Teasers: M3: Fundamentals of the Fundamentals
+:imagesdir: ./new-images-copy
+:source-highlighter: rouge
+:icons: font
+
+
+<<<
+
+== Overview
+
+Key concepts from Module 3 are:
+
+* Producers
+* Brokers
+* Consumers
+* ZooKeeper
+* Decoupling of producers and consumers 
+* Topics
+* Partitions and segments
+* Logs
+* Offset to write the next message produced to
+* Consumer offsets
+* Records
+* Replication
+* Partitioning strategies
+* How consumers access messages
+* Consumer groups
+
+
+
+
+Here’s the https://forms.gle/RDc84FbPeJ2CwCRP9[quick quiz on Module 3] from the Online Talk Series.
+
+
+ifdef::artifact-type[]
+---
+guide
+
+ 
+endif::artifact-type[]
+
+
+<<<
+
+== Problem #3A: How Do Producers Connect to Consumers?
+
+Suppose you have a Kafka cluster; one producer, _p_~0~, producing to topic _t_~0~, with one partition; and one consumer _c_~0~, reading from topic _t_~0~. _c_~0~ read what _p_~0~ produced. This implies _p_~0~ and _c_~0~ are related. What is the nature of this relationship? If you add another producer _p_~1~ (that also produces to topic _t_~0~), must you also add another consumer (e.g., _c_~1~) to read messages from _p_~1~? 
+
+
+
+
+ifdef::artifact-type[]
+---
+guide
+
+ 
+endif::artifact-type[]
+
+<<<
+
+
+
+== Problem #3B: Single Consumption or Multiple Consumption?
+
+Suppose you have a Kafka cluster; one producer, _p_~0~, producing to topic _t_~0~, with one partition; and one consumer _c_~0~, reading from topic _t_~0~. Independent of the last question, suppose consumer _c_~0~ read message _m_~0~. Could another consumer _c_~10~, in another consumer group, also consume message _m_~0~?
+
+
+ifdef::artifact-type[]
+---
+guide
+
+
+endif::artifact-type[]
+
+

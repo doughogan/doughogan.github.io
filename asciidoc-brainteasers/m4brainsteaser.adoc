@@ -1,0 +1,107 @@
+= Kafka Fundamentals Brain Teasers: M4: How Kafka Works
+:imagesdir: ./new-images-copy
+:source-highlighter: rouge
+:icons: font
+
+
+<<<
+
+== Overview
+
+Key concepts from Module 4 are:
+
+* A simple producer code example in the Java API
+* A simple consumer code example in the Java API
+* Replication, leaders, and followers
+* Deletion retention policy
+* Producer design
+* Acknowledgments
+* Idempotence
+* Partitioning strategies
+* Consumer groups and rebalancing
+* Security 
+
+
+Here’s the https://forms.gle/JyY2w9FN6iCTsp5y7[quick quiz on Module 4] from the Online Talk Series.
+
+
+ifdef::artifact-type[]
+---
+guide
+
+ 
+endif::artifact-type[]
+
+
+<<<
+
+== Problem #4A: Relating Consumers in Groups
+
+Suppose you have a topic with 3 partitions, _p_~0~, _p_~1~, and _p_~2~. Further, suppose we have consumer group _g_~0~ with consumers _c_~0~ and _c_~1~. No matter what further configuration you have, what is the same about _c_~0~ and _c_~1~? What is different?
+
+
+
+
+ifdef::artifact-type[]
+---
+guide
+
+ 
+endif::artifact-type[]
+
+<<<
+
+
+
+== Problem #4B: Fixing a Broken Consumer/Partition Assignment
+
+Suppose you have a topic with 3 partitions, _p_~0~, _p_~1~, and _p_~2~. Further, suppose you have consumer group _g_~0~ with consumers _c_~0~ and _c_~1~. Suppose at one point in time, we have only the following assignments: _c_~1~ is consuming from _p_~0~ and _c_~1~ is consuming from _p_~2~. What is the downside about this situation? Propose a fix.
+
+
+ifdef::artifact-type[]
+---
+guide
+
+
+endif::artifact-type[]
+
+
+
+<<<
+
+
+
+== Problem #4C: Understanding Consumer Offsets
+
+Suppose you have a topic with 3 partitions, _p_~0~, _p_~1~, and _p_~2~. Further, suppose you have consumer group _g_~0~ with consumers _c_~0~ and _c_~1~. It's the same situation as before. Suppose _c_~1~ just read the message at offset 12 in _p_~0~. What is its consumer offset for this partition? With your fix in mind, are there any other consumer offsets stored? 
+
+
+
+ifdef::artifact-type[]
+---
+guide
+
+
+endif::artifact-type[]
+
+
+
+
+<<<
+
+
+
+== Problem #4D: When Can Two Consumers Consume the Same Partition? 
+
+Suppose you have a topic with 3 partitions, _p_~0~, _p_~1~, and _p_~2~. Further, suppose you have consumer group _g_~0~ with consumers _c_~0~ and _c_~1~. You know that _c_~1~ is consuming from _p_~0~. Can _c_~0~ consume from _p_~0~? If so, why? If not, how can you change the setup to allow another consumer to consume from _p_~0~?
+
+
+ifdef::artifact-type[]
+---
+guide
+
+
+endif::artifact-type[]
+
+
+
