@@ -1,0 +1,65 @@
+= Kafka Fundamentals Brain Teasers: M2: Use Cases and Motivations
+:imagesdir: ./new-images-copy
+:source-highlighter: rouge
+:icons: font
+
+
+<<<
+
+== Overview
+
+The first part of learning Kafka fundamentals is understanding what Kafka is good at and exploring use cases. Key concepts are:
+
+* Real time vs. batch processing
+* Use cases
+
+
+Here’s the https://forms.gle/ww7MZ74BmLsYrc1R6[quick quiz on Module 2] from the Online Talk Series.
+
+*Note:* For this form of these brain teasers, I've opted to number the problems so that they correspond with module numbers from the Fundamentals course. Thus, we start with Problem #2, corresponding to Module 2; there is no #1. 
+
+
+ifdef::artifact-type[]
+---
+guide
+
+ 
+endif::artifact-type[]
+
+
+
+
+<<<
+
+== Problem #2A: Applying Kafka to a Digital Jukebox Use Case
+
+Suppose you are building a network of digital jukeboxes that operate in restaurants, bars, event spaces, etc. Users can maintain accounts and use credit cards and a phone app to purchase credits to play songs. Using the same app, users can play songs, as long as they are located within a reasonable distance of a jukebox they are targeting.
+So, thinking of some of the things Kafka is cut out for, what are at least 3 reasons Kafka is well-suited for this application? (Hint: Review the Module 2: Motivation & Customer Use Cases lecture and/or the handbook.)
+
+
+
+
+ifdef::artifact-type[]
+---
+guide
+
+ 
+endif::artifact-type[]
+
+<<<
+
+
+
+== Problem #2B: How Kafka Can Make the Digital Jukeboxes Go Even Further
+
+Suppose you are partnered with a company that sells tickets to concerts and music-related merchandise. Could you add additional services to your existing Kafka cluster? What kinds of things could you do to advance both businesses? What Kafka features would be important?
+
+
+ifdef::artifact-type[]
+---
+guide
+
+
+endif::artifact-type[]
+
+
