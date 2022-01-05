@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.15">
-<title>Apache Kafka Fundamentals: Exercise Book</title>
+<title>Apache Kafka&#174; Fundamentals: Hands-On Exercise</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -435,29 +435,259 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Apache Kafka Fundamentals: Exercise Book</h1>
+<h1>Apache Kafka&#174; Fundamentals: Hands-On Exercise</h1>
 <div class="details">
 <span id="revnumber">version draft</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_lab">Lab</a></li>
+<li><a href="#_lab_setup">Lab Setup</a></li>
+<li><a href="#_set_up_a_topic_producer_and_consumer">Set up a Topic, Producer, and Consumer</a></li>
+<li><a href="#_experience_producing_and_consuming">Experience Producing and Consuming</a></li>
+<li><a href="#_observe_partitions_and_log_end_offsets">Observe Partitions and Log End Offsets</a></li>
+<li><a href="#_observe_consumer_offsets">Observe Consumer Offsets</a></li>
+<li><a href="#_cleanup">Cleanup</a></li>
+<li><a href="#_enrichment_optional">Enrichment - OPTIONAL</a>
+<ul class="sectlevel2">
+<li><a href="#_explore_partitions_further">Explore Partitions Further</a></li>
+<li><a href="#_interpret_consumption_status">Interpret Consumption Status</a></li>
+<li><a href="#_observe_brokers">Observe Brokers</a></li>
+<li><a href="#_further_enrichment">Further Enrichment</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_lab">Lab</h2>
+<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>This is a hands-on exercise designed to let you experience some of the concepts from Fundamentals for yourself. It runs entirely within a web browser - nothing else needed - using a tool called Gitpod.</p>
 </div>
-<div class="sect2">
-<h3 id="_prerequisites">Prerequisites</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_setup">Lab Setup</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To get started, <a href="https://gitpod.io/#https://github.com/doughogan/fun-gitpod" target="_blank" rel="noopener">click here to launch the lab environment in Gitpod</a>.</p>
 </div>
@@ -489,8 +719,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Observe that in each terminal, you&#8217;ll see a <code>[appuser@broker ~]$</code> prompt. Each is running bash, all in the same Docker container (but you don&#8217;t need to know anything about Docker; all that setup is done for you).</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_setting_up_a_topic_producer_and_consumer">Setting up a Topic, Producer, and Consumer</h3>
+</div>
+<div class="sect1">
+<h2 id="_set_up_a_topic_producer_and_consumer">Set up a Topic, Producer, and Consumer</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>In this exercise, we&#8217;ll use a single topic and command line producer and consumer tools. Let&#8217;s get them all set up. Follow these steps:</p>
 </div>
@@ -550,15 +782,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_experiencing_producing_and_consuming">Experiencing Producing and Consuming</h3>
+</div>
+<div class="sect1">
+<h2 id="_experience_producing_and_consuming">Experience Producing and Consuming</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Now let&#8217;s produce some messages and observe our consumer as it reads them.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="6">
 <li>
-<p>To produce a message, type a key, followed by a colon, followed by a value after the <code>&gt;</code> prompt in the Producing terminal panel. For example, to produce a message with a key of <strong>4</strong> and a value of <strong>owl</strong>, type:</p>
+<p>To produce a message, type a key, followed by a colon, followed by a value after the <code>&gt;</code> prompt in the Producing terminal pane. For example, to produce a message with a key of <strong>4</strong> and a value of <strong>owl</strong>, type:</p>
 <div class="listingblock">
 <div class="content">
 <pre>&gt; <strong>4:owl</strong></pre>
@@ -574,7 +808,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p>The consumer is already running in the rightmost pane. Observe that the key and value of your message are both displayed automatically. For the above example, one would get:</p>
+<p>The consumer is already running in the rightmost terminal pane. Observe that the key and value of your message are both displayed automatically. For the above example, one would get:</p>
 <div class="listingblock">
 <div class="content">
 <pre>4       owl</pre>
@@ -590,8 +824,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_observe_partitions_and_offsets">Observe Partitions and Offsets</h3>
+</div>
+<div class="sect1">
+<h2 id="_observe_partitions_and_log_end_offsets">Observe Partitions and Log End Offsets</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You may recall that when we created our topic, it had <strong>3</strong> partitions. You may also recall hearing about offsets in logs as well as consumer offsets in the Fundamentals presentation. Let&#8217;s see a little bit about those matters.</p>
 </div>
@@ -607,6 +843,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     --group test-group</strong></pre>
 </div>
 </div>
+<details>
+<summary class="title">Expected Output</summary>
+<div class="content">
 <div class="paragraph">
 <p>You&#8217;ll get output that looks something like this:</p>
 </div>
@@ -618,9 +857,57 @@ test-group      test-topic      1          5               5               0    
 test-group      test-topic      2          1               1               0               co1</pre>
 </div>
 </div>
+</div>
+</details>
 </li>
 <li>
 <p>Note that the above output resulted after 8 messages - two of which had key <code>4</code> and six of which had other keys - were produced. Look at the <code>LOG-END-OFFSET</code> column; what do you observe that makes sense? What is not clear?</p>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="paragraph">
+<p>If you add up the values in the <code>LOG-END-OFFSET</code>, you get <code>8</code> and there are <code>8</code> messages.</p>
+</div>
+<div class="paragraph">
+<p>To recap, for any given partition,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the first message is written to offset <code>0</code></p>
+</li>
+<li>
+<p>the next message is written to offset <code>1</code>, etc.</p>
+</li>
+<li>
+<p>the <code>LOG-END-OFFSET</code> shows the offset to which the next message would be written.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So, to be precise, this output and what we&#8217;ve experienced tells us:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>partition <code>0</code> has messages at offsets <code>0</code> and <code>1</code></p>
+</li>
+<li>
+<p>partition <code>1</code> has messages at offsets <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, and <code>4</code></p>
+</li>
+<li>
+<p>partition <code>2</code> has a message at offset <code>0</code> only</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>What this does not tell us is which specific messages (and, importantly, which keys) are written to each partition. There&#8217;s an optional exercise in the Enrichment section that explores that if you are curious.</p>
+</div>
+<div class="paragraph">
+<p>(To be very precise, we can reach the above conclusion additionally knowing log compaction is not turned on.)</p>
+</div>
+</div>
+</details>
 </li>
 <li>
 <p>Now produce another message with key <code>4</code> in the Producing pane, e.g.</p>
@@ -631,99 +918,507 @@ test-group      test-topic      2          1               1               0    
 </div>
 </li>
 <li>
-<p>Observe this message in your consuming pane.</p>
+<p>Observe this message in your right Consuming terminal pane.</p>
 </li>
 <li>
 <p>Also rerun the <code>kafka-consumer-groups&#8230;&#8203;</code> command from Step 9 in the Setup and Status pane. What do you observe? To which partition did Kafka write your new message?</p>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="paragraph">
+<p>In the running example, the output before producing a new message with key <code>4</code> was</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             COD
+test-group      test-topic      0          1               1               0               co1
+test-group      test-topic      1          4               4               0               co1
+test-group      test-topic      2          1               1               0               co1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And, after producing a new message with key <code>4</code>, the output was:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             COD
+test-group      test-topic      0          1               1               0               co1
+test-group      test-topic      1          5               5               0               co1
+test-group      test-topic      2          1               1               0               co1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can see that the <code>LOG-END-OFFSET</code> for partition <code>1</code> increased by 1, and we can deduce that our new message was written to partition <code>1</code>.</p>
+</div>
+<div class="paragraph">
+<p>The specific partition number may vary for you, but you should observe exactly one partition&#8217;s <code>LOG-END-OFFSET</code> incrementing.</p>
+</div>
+</div>
+</details>
 </li>
 <li>
 <p>If you were to produce another message with key <code>4</code>, to which partition do you think it will be written? Produce such a message, and repeat the prior step to see if you were right.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>MORE: Stop consumer, produce more, see what happens.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_rest">rest</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>We created a topic with 3 partitions and we are working within a cluster with 4 brokers. Use the following command to observe how Kafka has distributed those partitions: <code>kakfa-consumer-groups&#8230;&#8203;</code></p>
-</li>
-</ol>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="7">
-<li>
-<p>Now switch back to the producer terminal and produce one more message. Then the consumption of the new message.</p>
-</li>
-<li>
-<p>Finally, go back to the first Terminal and rerun the <code>kafka-consumer-groups</code> command to observe the partitions again. Particularly, observe the <code>LOG END OFFSET</code> for each partition and observe that it has changed from before. Notice the the consumer offsets will all match the log end offset.</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Stop the consumer and try producing more messages with different keys and rerunning this command before consuming; observe that log end offset and consumer offset will vary.</p>
-</li>
-<li>
-<p>What do you think is meant by <code>LAG</code>?</p>
-</li>
-<li>
-<p>Rerun the consumer, then rerun this command to observe how the offsets change.</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Clean up. Stop producer - Ctrl+D, consumer - Ctrl+C, etc.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>==</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_old_stuff_for_formatting">Old stuff for formatting</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Let&#8217;s first use the <code>kafka-topics</code> tool to list all topics registered on the Kafka cluster:</p>
-<div class="listingblock">
+<details>
+<summary class="title">Solution</summary>
 <div class="content">
-<pre>$ <strong>kafka-topics --bootstrap-server kafka:9092 --list</strong></pre>
-</div>
-</div>
 <div class="paragraph">
-<p>you should see this:</p>
+<p>Yes, if you produce several more messages with key <code>4</code>, they will all go to the same partition.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+This holds true in this setup, but does it always?
+</td>
+</tr>
+</table>
+</div>
+</div>
+</details>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_observe_consumer_offsets">Observe Consumer Offsets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Look back at your last output, like that in Step 9. We looked at <code>LOG-END-OFFSET</code>, where the next message will be written in each partition. But you&#8217;ll also see <code>CURRENT-OFFSET</code> reported; this is the <strong>consumer offset</strong>, where the consumer reading a partition will read next.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="15">
+<li>
+<p>Inspect the values of <code>CURRENT-OFFSET</code> in your output. Why do they make sense?</p>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="paragraph">
+<p>For all partitions, the <code>CURRENT-OFFSET</code> - or consumer offset - matches the <code>LOG-END-OFFSET</code>. We observed a consumer reading all of the messages that have been produced. Thus, it should make sense that the position to read the next message in each partition (the consumer offset) is the same as the position to write the next message in each partition (the <code>LOG-END-OFFSET</code>).</p>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>Go back to the Consuming terminal pane and stop the <code>kafka-console-consumer</code> that is running by entering <code>Ctrl+C</code>.</p>
+<details>
+<summary class="title">Expected Output</summary>
+<div class="content">
+<div class="paragraph">
+<p>Observe a reaction like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>__confluent.support.metrics</pre>
+<pre>^CProcessed a total of 8 messages
+[appuser@broker ~]$</pre>
+</div>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>Go back to the Setup and Status terminal pane and rerun the <code>kafka-consumer-groups</code> command from Step 9 (you can copy the command from Step 9 or use the up arrow in the terminal) and observe the output.</p>
+<details>
+<summary class="title">Expected Output</summary>
+<div class="content">
+<div class="paragraph">
+<p>You&#8217;ll see output something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Consumer group 'test-group' has no active members.
+
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             COD
+test-group      test-topic      2          1               1               0               - -
+test-group      test-topic      0          1               1               0               - -
+test-group      test-topic      1          5               5               0               - -</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Apparently there is only a single topic called <code>__confluent.support.metrics</code> registered in the cluster.</p>
+<p>Most importantly, notice that the status indicates that <code>Consumer group 'test-group' has no active members.</code> This makes sense, as we stopped our consumer. But notice that Kafka still knows the offset of the consumer we stopped for each partition; we go in detail about how this works in the Confluent Developer Skills for Building Apache Kafka&#174; and Apache Kafka&#174; Administration by Confluent courses, but let&#8217;s explore consumer offsets just a bit further for now.</p>
 </div>
+</div>
+</details>
+</li>
+<li>
+<p>Your producer should still be running in the middle Producing terminal pane. Produce three more messages.</p>
+</li>
+<li>
+<p>Go back to the left Setup and Status terminal pane and run the <code>kafka-consumer-groups</code> command from Step 9 again and observe the output.</p>
+<details>
+<summary class="title">Expected Output</summary>
+<div class="content">
+<div class="paragraph">
+<p>Your output might look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Consumer group 'test-group' has no active members.
+
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             COD
+test-group      test-topic      2          1               1               0               - -
+test-group      test-topic      0          1               2               1               - -
+test-group      test-topic      1          5               7               2               - -</pre>
+</div>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>Inspect the <code>CURRENT-OFFSET</code> and <code>LOG-END-OFFSET</code> columns in each row of your output. Why do they make sense?</p>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="paragraph">
+<p>We have produced 3 more messages, but do not have any active consumer.</p>
+</div>
+<div class="paragraph">
+<p>We can deduce from the second row that one of those messages was produced to partition <code>0</code>. The <code>LOG-END-OFFSET</code> has increased by 1, to indicate the next message will be written at offset <code>2</code>. But the <code>CURRENT-OFFSET</code> remains at 1 because there has not been any consumption; the next message to be consumed from this partition is at offset <code>1</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can deduce from the third row that two of the new messages were produced to partition <code>1</code>, but have not yet been consumed. The new messages are at offsets <code>5</code> and <code>6</code>.</p>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>In the right Consuming terminal pane, start your consumer again. (Copy the command from Step 3 or use the up arrow in the terminal.) Then, back in the left Setup and Status terminal pane, rerun the <code>kafka-consumer-groups</code> (from Step 9, again you can just use the up arrow to get it). Continuing from the last output, you might see output like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre>GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             COD
+test-group      test-topic      0          2               2               0               co1
+test-group      test-topic      1          7               7               0               co1
+test-group      test-topic      2          1               1               0               co1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What do you observe?</p>
+</div>
+<details>
+<summary class="title">Expected results</summary>
+<div class="content">
+<div class="paragraph">
+<p>Now the <code>CURRRENT-OFFSET</code> for each consumer should be caught up with the <code>LOG-END-OFFSET</code>.</p>
+</div>
+<div class="paragraph">
+<p>You should observe in your Consuming terminal pane that the three new messages are displayed. (Note that even though our <code>kafka-console-consumer</code> command specifies <code>--from-beginning</code>, it interprets this as beginning from the known offset in this case. There&#8217;s a lot going on with consumer offsets, the details of which are out of our scope but are part of the Confluent Developer Skills for Building Apache Kafka&#174; and the Apache Kafka&#174; Administration by Confluent courses.)</p>
+</div>
+</div>
+</details>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cleanup">Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the end of the activity. There are a few enrichment activities further down in the Enrichment section page you may wish to try, but if you want to finish now, you should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="22">
+<li>
+<p>Stop your producer in the middle Producing terminal pane with <code>Ctrl+D</code>.</p>
+</li>
+<li>
+<p>Stop your consumer in the right Consuming terminal pane with <code>Ctrl+C</code>.</p>
+</li>
+<li>
+<p>Close the browser window running Gitpod. Note that while you can run multiple instances of Gitpod, Github will limit you if you run too many at once and you may need to terminate one or more.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_enrichment_optional">Enrichment - OPTIONAL</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Numbering for these optional sections is independent of the main activity.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_explore_partitions_further">Explore Partitions Further</h3>
+<div class="paragraph">
+<p>Here we&#8217;ll look at partitions more. You can consume from a single partition. To do so, add <code>--partition</code> followed by a partition number to the <code>kafka-consumer-groups</code> command. Let&#8217;s try it out.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before you begin, stop your running consumer in the right Consuming terminal pane with <code>Ctrl+C</code>.</p>
+<details>
+<summary class="title">Alternatively, you can open another terminal pane&#8230;&#8203;</summary>
+<div class="content">
+<div class="paragraph">
+<p>To do so:</p>
+</div>
+<div class="paragraph">
+<p>First, look to the right of the toolbar and click on the down arrow to the right of the <code>+</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/gitpod/gitpod-new-terminal-pane-1.png" alt="gitpod new terminal pane 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Then select <strong>Split Terminal &gt;</strong>, followed by <strong>bash</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/gitpod/gitpod-new-terminal-pane-2.png" alt="gitpod new terminal pane 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, run this command (automated in the lab setup for the other terminal panes) in the new terminal pane:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>docker-compose exec broker bash</code></pre>
+</div>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>View what&#8217;s on partition <code>0</code> with this command:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>kafka-console-consumer \
+    --bootstrap-server broker:9092 \
+    --topic test-topic \
+    --from-beginning \
+    --property print.key=true \
+    --partition 0</strong></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You might want to try this for partitions <code>1</code> and <code>2</code> as well. (You might need to in the case that none of your messages was written to partition <code>0</code>.) Remember that you use <code>Ctrl+C</code> to terminate a console consumer.</p>
+</div>
+</li>
+<li>
+<p>Inspect your output and write down one key and partition number.</p>
+</li>
+<li>
+<p>Try producing another message with the same key and consuming from the same partition as in the last step. Does the new message go to the same partition? Try this with a few messages.</p>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="paragraph">
+<p>Yes, indeed. If you keep producing more messages with the same key in this setup, they will go to the same partition. I observed a message with key <code>5</code> on partition <code>0</code>, and then produced two more messages with key <code>5</code>, both of which were indeed consumed by the consumer specifically set to read from partition <code>0</code>.</p>
+</div>
+</div>
+</details>
+</li>
+<li>
+<p>Now let&#8217;s increase the number of partitions for our topic. In the left Setup and Status terminal panel, run this command to add two more partitions:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>kafka-topics \
+    --bootstrap-server broker:9092 \
+    --alter \
+    --topic test-topic \
+    --partitions 5</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Produce another message with the same key as in Step 3.</p>
+</li>
+<li>
+<p>Then observe your running <code>kafka-console-consumer</code> for the same partition as in Step 3. Did your new message go to the same partition as before? If not, where did it go?</p>
+<details>
+<summary class="title">Solution</summary>
+<div class="content">
+<div class="paragraph">
+<p>It is possible your new message went to the same partition as before, but if that happened, try again with a different key.</p>
+</div>
+<div class="paragraph">
+<p>In the running example,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Messages with keys <code>5</code> and <code>11</code> were observed on partition <code>0</code> before increasing the number of partitions</p>
+</li>
+<li>
+<p>After increasing the number of partitions and producing a new message with key <code>5</code>, the new message was observed on partition <code>0</code> as well.</p>
+</li>
+<li>
+<p>However, after producing a new message with key <code>11</code>, the partition <code>0</code> consumer did <strong>not</strong> consume the message with key <code>11</code>.</p>
+</li>
+<li>
+<p>Running the consumer on partition <code>3</code> revealed that this new key-<code>11</code> message was written to partition <code>3</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that in this example, messages with key <code>11</code> produced before the change in number of partitions were written to partition <code>0</code> and messages produced after the change in number of partitions were written to partition <code>3</code>. This follows from the default partitioning strategy presented in the Fundamentals slides.</p>
+</div>
+<div class="paragraph">
+<p>What if you want to partition differently? What if having these key <code>11</code> messages on different partitions is problematic for your use cases? We discuss these matters in the Confluent Developer Skills for Building Apache Kafka&#174; course. What about managing and changing the number of partitions? We discuss more about that in the Apache Kafka&#174; Administration by Confluent course.</p>
+</div>
+</div>
+</details>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_conclusion">Conclusion</h3>
+<h3 id="_interpret_consumption_status">Interpret Consumption Status</h3>
 <div class="paragraph">
-<p> <br></p>
+<p>Look to your output or the sample output from Step 19. Look at the <code>LAG</code> column. What do you think this means?</p>
 </div>
-<div class="imageblock text-center">
+<details>
+<summary class="title">Solution</summary>
 <div class="content">
-<img src="./images/stophand.png" alt="stophand" width="200">
+<div class="paragraph">
+<p>This is the <strong>consumer lag</strong>; each entry tells how many messages have been written to the current partition but have not yet been consumed.</p>
+</div>
+<div class="paragraph">
+<p>We can measure consumer lag not only at the partition level, but also at the consumer and topic level. Because many Kafka use cases involve processing data in real time, consumer lag is an important metric we want to monitor. We go into this in great detail and have exercises on it in our Administration track courses.</p>
 </div>
 </div>
-<div class="paragraph text-center">
-<p><strong>STOP HERE. THIS IS THE END OF THE EXERCISE.</strong></p>
+</details>
 </div>
-<div style="page-break-after: always;"></div>
+<div class="sect2">
+<h3 id="_observe_brokers">Observe Brokers</h3>
+<div class="paragraph">
+<p>We&#8217;ve looked at partitions and messages so far, but recall from the Fundamentals presentation that partitions live on brokers. So, how can we see what the brokers are in this case?</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run the <code>kafka-topics</code> command with the <code>--describe</code> flag to get some insight:</p>
+<div class="listingblock">
+<div class="content">
+<pre>$ <strong>kafka-topics \
+    --bootstrap-server broker:9092 \
+    --describe \
+    --topic test-topic</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Observe the output, particularly the <code>Leader</code> attribute in each row:</p>
+<div class="listingblock">
+<div class="content">
+<pre>Topic: test-topic       PartitionCount: 3       ReplicationFactor: 1    Configs:
+        Topic: test-topic       Partition: 0    Leader: 1       Replicas: 1     Isr: 1
+        Topic: test-topic       Partition: 1    Leader: 1       Replicas: 1     Isr: 1
+        Topic: test-topic       Partition: 2    Leader: 1       Replicas: 1     Isr: 1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In all such cases, the <code>Leader</code> is reported as <code>1</code>. This is the broker ID of the broker that contains the partition for the row. In the lab setup that was done automatically for you, there was only one broker and its ID is <code>1</code>, so this makes sense.</p>
+</div>
+<div class="paragraph">
+<p>More precisely, recall the concept of replication that came up in the Fundamentals presentation briefly. The <code>Leader</code> in the output shows the broker containing the main replica of the partition for each row.</p>
+</div>
+<details>
+<summary class="title">More</summary>
+<div class="content">
+<div class="paragraph">
+<p>The lab setup did not activate replication, or, more accurately, left replication factor at <code>1</code>, as you can observe in the first row of the output. In each partition&#8217;s row, you&#8217;ll see <code>Replicas</code>, which tells the broker IDs where all copies of the partition are, including the leader. The <code>Isr</code> will report an important subset of those replicas. We go into great detail on replication, from different perspectives, in the Confluent Developer Skills for Building Apache Kafka&#174; and the Apache Kafka&#174; Administration by Confluent courses.</p>
+</div>
+</div>
+</details>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_further_enrichment">Further Enrichment</h3>
+<div class="paragraph">
+<p>We&#8217;ve worked with the following commands in this lab:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>kafka-topics</code></p>
+</li>
+<li>
+<p><code>kafka-consumer-groups</code></p>
+</li>
+<li>
+<p><code>kafka-console-producer</code></p>
+</li>
+<li>
+<p><code>kafka-console-consumer</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You might explore by playing with these commands further, reading some of their documentation (good link?), and doing more producing and consuming to see what happens.</p>
+</div>
+<div class="paragraph">
+<p>We are only scratching the surface here. Take either the Confluent Developer Skills for Building Apache Kafka&#174; course and/or the Apache Kafka&#174; Administration by Confluent course to learn about producers, consumers, groups, partitions, offsets, and more in much more detail!</p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="_draft_two_more_things_to_explore_and_possibly_build_out">DRAFT: TWO MORE THINGS TO EXPLORE AND POSSIBLY BUILD OUT?</h4>
+<div class="paragraph">
+<p>(but then again, this is enough!)</p>
+</div>
+<div class="paragraph">
+<p>Enhancements I&#8217;d like to try:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Try adding more brokers to Docker compose file and then use <code>kafka-topics --describe</code> to see where partitions go</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ADM <code>docker-compose.yml</code> should have setup I can adapt from or borrow</p>
+</li>
+<li>
+<p>Tried adding a second broker and changing a few things and failed&#8230;&#8203; hmm&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Is there a way to have multiple <strong>console</strong> consumers in the same group? Haven&#8217;t tried this yet but I think so</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Look back to Dave&#8217;s CGP CCloud exercise&#8201;&#8212;&#8201;</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>--consumer-property client.id=&lt;C1 thru C3&gt;</code> there, with <code>--group</code> but no topic</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Try with another terminal and try with explicitly using <code>--group</code> and <code>--offset</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>If I act on this, put it in enrichment and comment on how assignment of consumers  to partitions in practice is automatic&#8230;&#8203; as I think about this, I&#8217;m not sure.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -731,7 +1426,7 @@ test-group      test-topic      2          1               1               0    
 <div id="footer">
 <div id="footer-text">
 Version draft<br>
-Last updated 2022-01-05 02:52:09 UTC
+Last updated 2022-01-05 19:37:24 UTC
 </div>
 </div>
 </body>
