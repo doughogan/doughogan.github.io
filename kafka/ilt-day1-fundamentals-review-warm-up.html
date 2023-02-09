@@ -1,0 +1,113 @@
+<html>
+
+   <head><title>Warm-up Discussion Questions</title></head>
+
+   <body>
+
+      <h1>Warm-Up Discussion: Some Fundamental Kafka Concepts</h1>
+
+      <p>Chat with a neighbor or two about these questions to review some core 
+         ideas about Kafka and help each other out. There's a time on each; 
+         don't spend longer than that time. 
+      </p>
+      <!-- Idea: Times are intentionally short. This isn't a recap where I'm
+           hoping to make them dig in slides from yesterday too. Some will 
+           know these things; some will not and can benefit from neighbors 
+           refreshing them or giving the the short version. I figure with a few 
+           minutes of wiggle room, this can be 20 minutes of discussion followed
+           by 15-20 minutes of recap. It's designed to focus on some very 
+           core ideas of Kafka, some of what I call "what makes Kafka Kafka," and
+           some of the things our STR course materials will assume they know. -->
+      <!-- Other idea: This is an experiment, but one that a lot of experience
+           has me optimistic about. Better than lecturing on fundamentals for
+           sure. I want to try it out and let them discuss and eavesdrop on
+           the discussions to get a sense of what they do and don't know. 
+           Maybe holes in knowledge can be patched by the recap discussion. 
+           Maybe eavesdropping on discussions will make an instructor say, 
+           "hmmm... I should really take 2 minutes for the slide on ___ in the
+           appendices or I should encourage students who struggled with ___ to
+           look at ___ in the appendices."-->
+
+
+      <table>
+
+         <tr><td width="50%">
+
+            <h2>Question 1 [6 mins]</h2>
+
+            <p>Determine if each statement is true or false and why:</p>
+            <!-- All are really "it depends." The idea is to get them remembering
+                 what topics, partitions, and brokers are and to get them 
+                 discussing the issues -->
+       
+            <ol type="a">
+               <li>All messages in a <b>topic</b> are on the same broker.</li>
+               <li>All messages in a <b>partition</b> are on the same broker.</li>
+               <!-- Yes, partitions as a whole on a single broker, but whole 
+                    partitions get replicated. Play devil's advocate and bring
+                    up replication if it doesn't come up. -->
+               <li>All messages that have the same key will be on the same broker.
+               </li>
+               <!-- We'd like... but... # partitions changing, what is 
+                    partitioning strategy -->
+               <li>The more partitions a topic has, the better.</li>
+               <!-- Big can of worms here, hence the time limit. In short, more
+                    parallelization, but more costs (e.g. leader election) to 
+                    maintain.-->
+            </ol>
+
+
+            <h2>Question 2 [3 mins]</h2>
+
+            <ol type="a">
+               <li>What are the roles of a producer and a consumer?</li>
+               <li>How is it decided which messages consumers read?</li>
+               <li>Who initiates the reading of messages: consumers or the 
+                   Kafka cluster?</li>
+            </ol>
+            <!-- A "what makes Kafka Kafka" thing: consumer subscribe to  
+                 topics and consume using a PULL architecture. -->
+
+       </td><td>
+
+
+            <h2>Question 3 [2 mins]</h2>
+
+            <p>Suppose there a message in our Kafka cluster about my breakfast 
+               purchase of $12.73 at the Hilton this morning. Consumer 
+               <i>c</i><sub>0</sub> has consumed it to process the 
+               charge. Could consumer <i>c</i><sub>7</sub> consume this same 
+               message this afternoon? 
+            </p>
+            <!-- The point, another "what makes Kafka Kafka" thing: 
+                 Multiple consumption. Once a message is consumed, it
+                 is not removed from the logs and any number of other consumers
+                 can consume it. Use case for more: analytics. -->
+
+
+            <h2>Question 4 [2 mins]</h2>
+
+            <p>Kafka supports the notion of transactions. 
+               As a preview, when we know that all messages that 
+               are part of a transaction successfully made it to the cluster, we 
+               want to tag those messages as good. When we know that not all
+               messages in a transaction made it, we want to tag those messages 
+               that did make it as "bad." Kafka uses markers in the logs, that
+               are effectively new messages written after existing messages, to 
+               do this. Why not just put something in the metadata? Why not delete
+               "bad" messages?
+            </p>
+            <!-- The point, another "what makes Kafka Kafka" thing: Immutability.
+                 Once a message is written to logs, it cannot be changed. That includes
+                 the metadata. The only way messages are removed from the logs is 
+                 via the retention policy, which is an awesome segue to... -->
+
+
+         </td></tr>
+
+      </table>
+
+
+   </body>
+
+</html>
