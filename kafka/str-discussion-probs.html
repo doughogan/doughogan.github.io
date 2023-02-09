@@ -662,7 +662,7 @@ pre.rouge {
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_problem_a_getting_started_with_stream_concepts">Problem A: Getting Started with Stream Concepts</a></li>
-<li><a href="#_problem_b_dsl">Problem B: DSL</a></li>
+<li><a href="#_problem_b_getting_started_with_the_dsl">Problem B: Getting Started with the DSL</a></li>
 <li><a href="#_problem_c_aggregating_a_ktable_demographic_data">Problem C: Aggregating a KTable - Demographic Data</a></li>
 <li><a href="#_problem_d_basic_windowing">Problem D: Basic Windowing</a></li>
 <li><a href="#_problem_e_windowing_with_keys">Problem E:  Windowing with Keys</a></li>
@@ -722,12 +722,12 @@ pre.rouge {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_problem_b_dsl">Problem B: DSL</h2>
+<h2 id="_problem_b_getting_started_with_the_dsl">Problem B: Getting Started with the DSL</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_part_1">Part 1</h3>
 <div class="paragraph">
-<p>Look at this code, reformatted from the slides in the submodule "Anatomy of a Kafka Streams App":</p>
+<p>Look at this code, reformatted from the slides in the lesson "Anatomy of a Kafka Streams App":</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -841,7 +841,7 @@ use the Kafka Streams DSL to do this.</p>
 <h2 id="_problem_c_aggregating_a_ktable_demographic_data">Problem C: Aggregating a KTable - Demographic Data</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Consider the Step by Step KTable aggregation example on the Slide "Aggregating a KTable - Step by Step." This problem is in the same vein, but a second example for you to work out. The end goal here would be to calculate the average age of users by postal code. Here is our problem setup to do this&#8230;&#8203;</p>
+<p>Consider the Step by Step KTable aggregation example on the Slide "Aggregating a <code>KTable</code> - Step by Step." This problem is in the same vein, but a second example for you to work out. The end goal here would be to calculate the average age of users by postal code. Here is our problem setup to do this&#8230;&#8203;</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1074,7 +1074,7 @@ preted As</th>
 <h2 id="_problem_g_aggregating_where_the_adder_isnt_adding_reduce">Problem G: Aggregating Where the Adder Isn&#8217;t Adding; Reduce</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>On the Slide titled "Aggregating a KStream," we talk about using    <code>aggregate()</code> to add up the lengths of some strings. In that example, our adder is literally an adder, but it doesn&#8217;t need to be.</p>
+<p>On the Slide titled "Aggregating a <code>KStream</code>," we talk about using <code>aggregate()</code> to add up the lengths of some strings. In that example, our adder is literally an adder, but it doesn&#8217;t need to be.</p>
 </div>
 <div class="paragraph">
 <p>If you come from a programming or CS background, you may recall in your first programming class learning how to solve some of the classic problems you can solve with loops - like sums and counts. Extreme values fit into the same group. Read the problems below and see if you can solve them:</p>
@@ -1207,7 +1207,7 @@ preted As</th>
 <h2 id="_problem_i_using_the_branch_operation">Problem I: Using the Branch Operation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Consider the module 2 slide "Stateless Operations - branch." Think of a practical application, ideally in your company&#8217;s context, where you could leverage this. Draw the processor topology.</p>
+<p>Consider the module 2 slide "Stateless Operations - <code>branch</code>." Think of a practical application, ideally in your company&#8217;s context, where you could leverage this. Draw the processor topology.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1216,7 +1216,7 @@ preted As</th>
 <h2 id="_problem_j_challenges_with_ksqldb_queries">Problem J: Challenges With ksqlDB Queries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Chicago, the cornerstone of the public transit system is href="<a href="https://www.transitchicago.com/assets/1/6/ctamap_Lsystem.png">the 'L'</a> (so-called because it&#8217;s the eLevated railway in many places). It&#8217;s organized into several color-coded train lines. Suppose you&#8217;re advising the transit authority on using ksqlDB to get some information on ridership to help decide where it can have a positive impact by renovating a station or stations.</p>
+<p>In Chicago, the cornerstone of the public transit system is <a href="https://www.transitchicago.com/assets/1/6/ctamap_Lsystem.png">the 'L'</a> (so-called because it&#8217;s the eLevated railway in many places). It&#8217;s organized into several color-coded train lines. Suppose you&#8217;re advising the transit authority on using ksqlDB to get some information on ridership to help decide where it can have a positive impact by renovating a station or stations.</p>
 </div>
 <div class="paragraph">
 <p>One other bit of background is that the city is organized on a grid system, where any point in the city can be expressed by a north-south coordinate and an east-west coordinate relative to the city center, e.g., 3600  N, 940 W. So, a table of station info would likely have a field for each of those coordinates. As for other field names in streams and tables, as well as the streams and tables themselves, make up something sensible. So then:</p>
@@ -1290,7 +1290,7 @@ right streams and tables populated with data, how would you go about it to minim
 <div id="footer">
 <div id="footer-text">
 Version 7.0.0-v1.0.2<br>
-Last updated 2023-02-09 16:19:24 UTC
+Last updated 2023-02-09 16:46:16 UTC
 </div>
 </div>
 </body>
