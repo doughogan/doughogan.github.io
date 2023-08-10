@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>SQL Overview</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<p align="center"><font size="1"><i>Notes prepared by Doug Hogan. For educational use only by students wishing to learn the basics of SQL.</i></font></p>
+<hr>
+
+
+<h1 align="center"><font color="#000099">An Overview of SQL </font></h1>
+<p align="right"><font size="-1">Last Modified 
+  <!-- #BeginDate format:Am2 -->11/4/16<!-- #EndDate --></font>
+</p>
+
+<p align="center">These notes are an edited form of notes on the basics of SQL, given here for some basic background.</p>
+
+<p align="center">
+	<font size="1">
+		<a href="#intro">Introduction</a> &bull; 
+		<a href="#datatypes">Data Types</a> &bull; 
+		<a href="#create">Creating Tables</a> &bull; 
+		<a href="#insert">Inserting Data</a> &bull; 
+		<a href="#select">Retrieving Data</a></font>
+</p>
+<hr>
+<h2><font color="#990033"><a name="intro"></a><font color="#000099">Introduction</font></font></h2>
+<p>Programmers typically use a system called <strong>SQL</strong> to manipulate databases. </p>
+<p>While we will do some basic database setup via the GUI in Access in this course, we'll look at some of the setup of a database through SQL for the sake of completeness and for it to make more sense when we do queries via SQL.</p>
+<p>SQL allows us functionality in setting up databases:</p>
+<ul>
+  <li>We can use <font face="Courier New, Courier, mono">create database</font> to create a database. There are also features for switching between databases. </li>
+  <li>We can use <font face="Courier New, Courier, mono">create table</font> to create the tables that make up a database. </li>
+</ul>
+<p>SQL allows us functionality in manipulating the contents of tables:</p>
+<ul>
+  <li>Via <font face="Courier New, Courier, mono">insert</font> statements, we can add records to tables.</li>
+  <li>Via <font face="Courier New, Courier, mono">update</font> statements, we can change the data in existing records.</li>
+  <li>Via <font face="Courier New, Courier, mono">delete</font> statements, we can remove entire records. </li>
+</ul>
+<p>Finally, SQL allows us to retrieve data from tables:</p>
+<ul>
+  <li>The <font face="Courier New, Courier, mono">select</font> statement allows this.</li>
+  <li>We can also do more complicated <font face="Courier New, Courier, mono">select</font> statements with concepts such as <font face="Courier New, Courier, mono">join</font>s and subqueries that allow us to use tables together in extremely powerful ways. </li>
+</ul>
+<p>SQL is quite different from traditional, general purpose programming languages. Instead of telling SQL <em>how</em> to get the information you want, you use SQL to say <em>what</em> you want. For example:</p>
+<ul>
+  <li>In a language like Python or C++ or Java, to retrieve all of the employees from a database whose hourly wage is at least $10, you would likely write a  loop to iterate through all the elements of an array (or some other structure), with a nested if statement checking the salaries. </li>
+  <li>In SQL, you'd write a statement like so: <font face="Courier New, Courier, mono"><br>
+  select * from employees where salary > 10;</font></li>
+</ul>
+<p>Let's note a few technical details:</p>
+<ul>
+  <li>SQL is case-insensitive. </li>
+  <li>There are various flavors of SQL that have slight differences.  </li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#intro">Introduction</a> &bull; <a href="#datatypes">Data Types</a> &bull; <a href="#create">Creating Tables</a> &bull; <a href="#insert">Inserting Data</a> &bull; <a href="#select">Retrieving Data</a></font> </p>
+<hr>
+<h2><font color="#990033"><a name="datatypes"></a><font color="#000099">Data Types</font></font></h2>
+<p>An important concept in computer science is that of a<strong> data type</strong>. In other words, when we create variables in some systems, we must associate a type with them. (Meanwhile, some systems handle typing loosely, assuming data types or implicitly typing most variables.) This is the first time here where you need to pay attention to types. </p>
+<p> Here are some of the data types in one flavor of SQL:</p>
+<table border="1">
+  <tr>
+    <th width="150" scope="col">Data Type </th>
+    <th scope="col">Notes</th>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">char(<em>n</em>)</font></td>
+    <td>Fixed-length string of <em>n</em> characters. </td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">varchar(<em>n</em>)</font></td>
+    <td>Same as above, but variable-length. Recommended in general. </td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">smallint</font></td>
+    <td>16 bit, i.e. accepts values ranging from -2<sup>15</sup> to 2<sup>15</sup>-1</td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">integer</font></td>
+    <td>32 bit, i.e. accepts values ranging from -2<sup>31</sup> to 2<sup>31</sup>-1 <font size="1">(<font face="Courier New, Courier, mono">int</font> in MySQL)</font> </td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">float</font></td>
+    <td rowspan="2">Floating point numbers </td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">double</font></td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">date</font></td>
+    <td>Format YYYY-MM-DD</td>
+  </tr>
+  <tr>
+    <td width="150"><font face="Courier New, Courier, mono">time</font></td>
+    <td>Format HH:MM:SS </td>
+  </tr>
+</table>
+<p>These specific type names are  just background for those curious about  code. In Access, you'll use drop-down menus to choose data types.</p>
+<p>&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center"><font size="1"><a href="#intro">Introduction</a> &bull; <a href="#datatypes">Data Types</a> &bull; <a href="#create">Creating Tables</a> &bull; <a href="#insert">Inserting Data</a> &bull; <a href="#select">Retrieving Data</a></font> </p>
+<hr>
+<h2><font color="#990033"><a name="create"></a><font color="#000099">Creating Tables</font></font></h2>
+<p>We can create a table with the SQL command <font face="Courier New, Courier, mono">create table</font>. We'll essentially list off our variables and their types. </p>
+<p>The general syntax is:</p>
+<blockquote>
+  <pre><strong><font color="#336600">create table</font></strong> <em>tableName</em> 
+<font color="#336600"><strong>(</strong></font>
+    <em>name type, 
+    /* more ... */
+    name type</em>
+<font color="#336600"><strong>);</strong> </font></pre>
+</blockquote>
+<p>Consider this example:</p>
+<blockquote>
+  <pre>/* Table to hold information about various courses */<br>create table courses<br>(<br>   course_id smallint,                              /* id, primary key                    */<br>   dept varchar(5),                                 /* department abbrev, e.g. 'CS'       */<br>   number smallint,                                 /* catalog number, e.g. 100           */<br>   name varchar(30),                                /* course title                       */<br>   credits smallint,                                /* number of credits                  */<br>   num_sections smallint                            /* how many sections are offered now  */<br>); </pre>
+</blockquote>
+<p>&nbsp;</p>
+<h3><font color="#990033"><font color="#000099">Primary Keys and Required Fields </font></font></h3>
+<p>Some other restrictions can be specified in our declarations.</p>
+<p>One is that we specify some fields to require values. We do this by adding <font color="#336600" face="Courier New, Courier, mono"><strong>not null</strong></font> to the end of their declarations. </p>
+<p>We can also specify fields to be primary keys. We do this by adding a <strong>constraint</strong> to the table. Here's a general form of how to define a primary key constraint: </p>
+<blockquote>
+  <pre><font color="#336600"><strong>constraint pk_</strong></font><em>tableName</em><font color="#336600"><strong> primary key ( </strong></font><em>primary key field name</em><font color="#336600"><strong> )</strong></font></pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>Here's an improved version of the above definition: </p>
+<blockquote>
+  <pre>/* Table to hold information about various courses */<br>create table courses<br>(<br>   course_id smallint <strong><font color="#336600">not null</font></strong>,                     /* id, primary key                    */<br>   dept varchar(5),                                 /* department abbrev, e.g. 'CS'       */<br>   number smallint,                                 /* catalog number, e.g. 100           */<br>   name varchar(30),                                /* course title                       */<br>   credits smallint,                                /* number of credits                  */<br>   num_sections smallint                            /* how many sections are offered now  */<br>   <font color="#336600"><strong>constraint pk_courses primary key (course_id)</strong></font><br>); </pre>
+</blockquote>
+<p>&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#intro">Introduction</a> &bull; <a href="#datatypes">Data Types</a> &bull; <a href="#create">Creating Tables</a> &bull; <a href="#insert">Inserting Data</a> &bull; <a href="#select">Retrieving Data</a></font> </p>
+<hr>
+<h2><font color="#990033"><a name="insert"></a><font color="#000099">Inserting Data into Tables </font></font></h2>
+<p>Great, so we've got a table. How do we put data into it with SQL? The <font face="Courier New, Courier, mono">insert</font> statement comes into play here. </p>
+<p>Here's the general form of an insert statement:</p>
+<blockquote>
+  <pre><strong><font color="#336600">insert into</font></strong> <em>table_name</em>
+<strong><font color="#336600">   (</font></strong><em>field_name_1</em><font color="#336600"><strong>,</strong></font> <em>field_name_2</em><strong><font color="#336600">,</font></strong> <em>etc.</em><strong><font color="#336600">)
+   values (</font></strong><em>value_for_field_name_1</em><font color="#336600"><strong>,</strong></font> <em>value_for_field_name_2</em><strong><font color="#336600">,</font></strong> <em>etc.</em><strong><font color="#336600"></font></strong><font color="#336600"><strong>);</strong></font></pre>
+</blockquote>
+<p>Consider these examples: </p>
+<blockquote>
+  <pre>insert into courses
+   (course_id, dept, number, name, credits, num_sections)
+   values (0, 'CS', 100, 'Discovering Computer Science', 3, 3);
+
+
+insert into courses
+   (course_id, dept, number, name, credits, num_sections, major_notes)
+   values (1, 'CS', 111, 'Program Design 1', 3, 3, 'possible CS major entry course');</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p><strong>Exercise 0:</strong> Given the above examples, are the following statements valid? Why or why not? </p>
+<blockquote>
+  <pre>insert into courses
+   (dept, number)
+   values ('MATH', 140);
+
+
+
+
+insert into courses
+   (course_id, dept, number)
+   values (1, 'MATH', 140);</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p><strong>Exercise 1: </strong> Write a statement to insert any other course you're currently taking.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote>
+  <p>&nbsp;</p>
+  <p align="center"><font size="1"><a href="#intro">Introduction</a> &bull; <a href="#datatypes">Data Types</a> &bull; <a href="#create">Creating Tables</a> &bull; <a href="#insert">Inserting Data</a> &bull; <a href="#select">Retrieving Data</a></font> </p>
+</blockquote>
+<hr>
+<h2><font color="#990033"><a name="select"></a><font color="#000099">Retrieving Information from Tables </font></font></h2>
+<p>Naturally, we want to retrieve and process the information we store in database tables. We'll use the SQL <font face="Courier New, Courier, mono">select</font> statement to do this. The select statement will afford us tremendous power. We'll start today with a very simple example and spend an entire class talking it in detail next week. </p>
+<p>The simplest form of a select statement allows us to retrieve everything from all of the rows of a table: </p>
+<blockquote>
+  <pre><strong><font color="#336600">select * from</font></strong> <em>tableName</em><strong><font color="#336600">;</font></strong></pre>
+</blockquote>
+<p>For example, the following gives us all of the information in the courses table: </p>
+<blockquote>
+  <pre>select * from courses;</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote>&nbsp;</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#intro">Introduction</a> &bull; <a href="#datatypes">Data Types</a> &bull; <a href="#create">Creating Tables</a> &bull; <a href="#insert">Inserting Data</a> &bull; <a href="#select">Retrieving Data</a></font></p>
+</body>
+</html>

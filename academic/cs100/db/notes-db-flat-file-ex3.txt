@@ -1,0 +1,31 @@
+Charles
+Montgomery
+Burns
+000-00-0002
+Burns Manor
+Springfield, USA
+49007
+555-0001
+555-0001 
+
+Savings Account
+Balance: 801000000.00
+
+11/01/1900
+Opening Deposit
+First Bank of Springfield Branch
+1000000.00
+
+11/01/1901
+Deposit
+First Bank of Springfield Branch
+3000000000.00
+
+11/01/1901
+Deposit
+First Bank of Springfield Branch
+5000000000.00
+
+
+
+

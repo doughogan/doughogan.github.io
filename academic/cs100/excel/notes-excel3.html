@@ -1,0 +1,635 @@
+<html>
+<head>
+<title>CS 100: Excel III</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1 align="center"><font color="#FF6600">Excel: Formulas III</font></h1>
+<div align="right"> 
+  <p><font size="1">Last Modified 
+    <!-- #BeginDate format:Am3 -->02/19/2016<!-- #EndDate -->
+    </font> </p>
+</div>
+<p align="center"><font size="1"><a href="#absolute">Absolute Referencing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_wiz">Function 
+  Wizard</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">Conditionals: IF</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#vlookup">Conditionals: VLOOKUP</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="absolute"></a>Absolute Referencing </font></h2>
+<h3><font color="#FF6600">vs. Relative Referencing</font></h3>
+<p>Recall: What happens to cell references when you copy a formula to a different 
+  cell? </p>
+<p>That's called <b>relative referencing</b> because the cell references change 
+  <i>relative</i> to where the formula is. </p>
+<h3><font color="#FF6600">Absolute Referencing</font></h3>
+<p>There's a contrast to relative referencing called <b>absolute referencing</b>. 
+  Simply put, absolute referencing means that part or all of the cell references 
+  remain &quot;locked&quot; when the formula is changed. </p>
+<p>You can lock a row reference, a column reference, or both. To lock a reference, 
+  put a <b><font face="Courier New, Courier, mono">$</font></b> in front of the 
+  row or column reference. </p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Examples of Absolute Referencing</font></h3>
+<p>For a reference to the cell <font face="Courier New, Courier, mono">C3</font>, 
+  the three degrees of absolute referencing:</p>
+<table border="1" cellspacing="1" cellpadding="3" align="center">
+  <tr> 
+    <td><b>What is locked</b></td>
+    <td><b>Reference</b></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">row</div>
+    </td>
+    <td> 
+      <div align="center"><font face="Courier New, Courier, mono">C<font color="#0000CC"><b>$</b></font>3</font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">column</div>
+    </td>
+    <td> 
+      <div align="center"><font face="Courier New, Courier, mono"><font color="#0000CC"><b>$</b></font>C3</font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">cell<br>
+        <font size="-1">(i.e. row AND column)</font></div>
+    </td>
+    <td> 
+      <div align="center"><font face="Courier New, Courier, mono"><font color="#0000CC"><b>$</b></font>C<font color="#0000CC"><b>$</b></font>3</font></div>
+    </td>
+  </tr>
+</table>
+<p>Absolute referencing can be used in ranges too, e.g. <font face="Courier New, Courier, mono">$A$1:$D$5</font>.</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Discussion</font></h3>
+<p>When would one want to use absolute referencing?</p>
+<p><a href="graph_kinematics_example.xls">Example to revisit</a></p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem</font></h3>
+<p>Suppose you initially have the formula <font face="Courier New, Courier, mono">=$C$3*5+1</font> 
+  in the cell <font face="Courier New, Courier, mono">D3</font>. What does the 
+  formula become when it is copied and pasted to the following locations?</p>
+<ol type="a">
+  <li>D6</li>
+  <li>AA155</li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem </font></h3>
+<p>Suppose you initially have the formula <font face="Courier New, Courier, mono">=($H6+H$7)/5+$A$4^B4</font> 
+  in the cell <font face="Courier New, Courier, mono">H8</font>. What does the 
+  formula become when it is copied and pasted to the cell <font face="Courier New, Courier, mono">K5</font>?</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#absolute">Absolute Referencing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_wiz">Function 
+  Wizard</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">Conditionals: IF</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#vlookup">Conditionals: VLOOKUP</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="func_wiz"></a>The Function Wizard</font></h2>
+<p><b>Insert &gt; Function</b> gives you access to the functions we've learned, 
+  and many others. </p>
+<p>(demo)</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#absolute">Absolute Referencing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_wiz">Function 
+  Wizard</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">Conditionals: IF</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#vlookup">Conditionals: VLOOKUP</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="if"></a>Conditional Functions: The IF function 
+  </font></h2>
+<p>The IF function implements the notion of selection. Here is the syntax:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>condition<font color="#0000FF"><b>,</b></font> 
+  value_if_true<font color="#0000FF"><b>,</b></font> value_if_false<strong><font color="#0000FF">)</font></strong></font></p>
+<p>The three parameters to the function:</p>
+<ul>
+  <li><b><font face="Courier New, Courier, mono">condition</font></b> -- For the 
+    argument, give an expression that is a logical test that returns either <font face="Courier New, Courier, mono">TRUE</font> 
+    or <font face="Courier New, Courier, mono">FALSE</font>. Use the Boolean operators 
+    below to build your expression. </li>
+  <li><font face="Courier New, Courier, mono"><b>value_if_true</b></font> -- For 
+    the argument, tell Excel what to put in this cell if the <font face="Courier New, Courier, mono">condition</font> 
+    is <font face="Courier New, Courier, mono">TRUE</font>. Give an expression 
+    that could be any of the following: 
+    <ul>
+      <li>A constant (a number)</li>
+      <li>An arithmetic expression built up from constants or cell references</li>
+      <li>A function call</li>
+      <li>An arithmetic expression built up with function calls </li>
+      <li>A text string enclosed in quotes (or &quot;&quot; for leaving the cell 
+        blank) </li>
+    </ul>
+  </li>
+  <li><font face="Courier New, Courier, mono"><b>value_if_false</b></font> -- 
+    For the argument, tell Excel what to put in this cell if the <font face="Courier New, Courier, mono">condition</font> 
+    is <font face="Courier New, Courier, mono">FALSE</font>. Give an expression 
+    as above. </li>
+</ul>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Boolean Operators</font></h3>
+<p>There are six operators that express relationships between quantities:</p>
+<table border="1" cellspacing="1" cellpadding="3">
+  <tr> 
+    <td><b>Operator</b></td>
+    <td><b>Meaning</b></td>
+    <td><b>Example Boolean Expression</b></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">&gt;</div>
+    </td>
+    <td>greater than</td>
+    <td><font face="Courier New, Courier, mono">A4&gt;5</font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">&gt;=</div>
+    </td>
+    <td>greater than or equal to</td>
+    <td><font face="Courier New, Courier, mono">A4&gt;=$A$1</font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">&lt;</div>
+    </td>
+    <td>less than</td>
+    <td><font face="Courier New, Courier, mono">A3&lt;$A1</font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">&lt;=</div>
+    </td>
+    <td>less than or equal to</td>
+    <td><font face="Courier New, Courier, mono">A2&lt;=A3</font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">=</div>
+    </td>
+    <td>equal to</td>
+    <td><font face="Courier New, Courier, mono">SUM(A1:A10)=A11</font></td>
+  </tr>
+  <tr> 
+    <td> 
+      <div align="center">&lt;&gt;</div>
+    </td>
+    <td>not equal to </td>
+    <td><font face="Courier New, Courier, mono">ASIN(A5)&lt;&gt;(PI()/2)</font></td>
+  </tr>
+</table>
+<p>(Named for George Boole, who did a lot of work in developing formal logic systems.) 
+</p>
+<h3><br>
+  <br>
+  <font color="#FF6600">Dean's List Example</font></h3>
+<p>Suppose we have the following sheet. </p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr> 
+    <td> 
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td colspan="2"><em>Dean's List Cutoff is</em></td>
+    <td>3.60</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td><b>GPA</b></td>
+    <td><b>Dean's List?</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">6</font></b></td>
+    <td>4.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">7</font></b></td>
+    <td>3.50</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">8</font></b></td>
+    <td>3.65</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">9</font></b></td>
+    <td>2.55</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">10</font></b></td>
+    <td>1.50</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">11</font></b></td>
+    <td>3.80</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>We'd like a formula for B6 which tells whether on not the GPA in A6 is a Dean's 
+  List GPA. </p>
+<p>We begin with a conditional function framework:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong><em>condition</em><font color="#0000FF"><b>,</b></font> 
+  <em>value_if_true</em><font color="#0000FF"><b>,</b></font> <em>value_if_false</em><strong><font color="#0000FF">)</font></strong></font></p>
+<p>We want to test whether the GPA is at least 3.6. The GPA is found in <font face="Courier New, Courier, mono">A6</font>, 
+  and we want at GPA of at least 3.6. We can use the logical test <font face="Courier New, Courier, mono">A6&gt;=3.6</font> 
+  for this case. The formula looks like this:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong><font color="#FF6600"><strong>A6&gt;=3.6</strong></font><font color="#0000FF"><b>,</b></font> 
+  <em>value_if_true</em><font color="#0000FF"><b>,</b></font> <em>value_if_false</em><strong><font color="#0000FF">)</font></strong></font></p>
+<p>Now, we need to specify what to do if the test is true. We want the cell to 
+  have a message saying the student made the Dean's list, so we'll use a text 
+  string enclosed in quotes for the <em>value_if_true</em>:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>A6&gt;=3.6<font color="#0000FF"><b>,</b></font> 
+  <font face="Courier New, Courier, mono"><font color="#FF6600"><strong>&quot;Made 
+  Dean's List&quot;</strong></font></font><em> </em><font color="#0000FF"><b>,</b></font> 
+  <em>value_if_false</em><strong><font color="#0000FF">)</font></strong></font></p>
+<p>If the test fails, we need another message. We'll use a simple one:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>IF</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>A6&gt;=3.6<font color="#0000FF"><b>,</b></font> 
+  <font face="Courier New, Courier, mono">&quot;Made Dean's List&quot;</font><em> 
+  </em><font color="#0000FF"><b>,</b></font> <font color="#0000FF"><b></b></font> 
+  <font face="Courier New, Courier, mono"><font color="#FF6600"><strong>&quot;No&quot;</strong></font></font><em> 
+  </em><strong><font color="#0000FF">)</font></strong></font></p>
+<p>The above formula will be appropriate. It could be improved. How?</p>
+<p><a href="deanslist.xls">Dean's List Example Workbook</a></p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Multiple Selection</font></h3>
+<p>IF functions can be nested to implement the notion of multiple selection. </p>
+<p>(illustration of a decision tree on the board)</p>
+<table width="75%" border="1" align="center" cellpadding="3" cellspacing="1">
+  <tr> 
+    <td><font face="Courier New, Courier, mono">=IF(</font></td>
+    <td> 
+      <div align="center"><font face="Courier New, Courier, mono"><em>condition</em></font></div>
+    </td>
+    <td> 
+      <div align="center"><font face="Courier New, Courier, mono"><em>value_if_true</em></font></div>
+    </td>
+    <td colspan="5"> 
+      <div align="center"><font face="Courier New, Courier, mono"><em>value_if_false</em></font></div>
+    </td>
+    <td> 
+      <div align="center"><font face="Courier New, Courier, mono">)</font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><font face="Courier New, Courier, mono">IF(</font></td>
+    <td><em><font face="Courier New, Courier, mono">condition</font></em></td>
+    <td><em><font face="Courier New, Courier, mono">value_if_true</font></em></td>
+    <td><em><font face="Courier New, Courier, mono">value_if_false</font></em></td>
+    <td><font face="Courier New, Courier, mono">)</font></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td> 
+      <div align="center">IF function</div>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td> 
+      <div align="right"> 
+        <p>eventually<br>
+          default<br>
+          answer</p>
+      </div>
+    </td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem</font></h3>
+<p>Let's modify the previous example. If a student doesn't make the Dean's list 
+  but maintains a B (&gt;=3.0) GPA, we'd like to print a message indicating that. 
+</p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr> 
+    <td> 
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td colspan="2"><em>Dean's List Cutoff is</em></td>
+    <td>3.60</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td><b>GPA</b></td>
+    <td><b>Dean's List?</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">6</font></b></td>
+    <td>4.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">7</font></b></td>
+    <td>3.50</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">8</font></b></td>
+    <td>3.65</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">9</font></b></td>
+    <td>2.55</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">10</font></b></td>
+    <td>1.50</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">11</font></b></td>
+    <td>3.80</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+<p align="center"><font size="1"><a href="#absolute">Absolute Referencing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_wiz">Function 
+  Wizard</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">Conditionals: IF</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#vlookup">Conditionals: VLOOKUP</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="vlookup"></a>Conditional Functions: The VLOOKUP 
+  function </font></h2>
+<p>You can implement most multiple selection problems using nested IF statements. 
+  That becomes tedious, especially balancing all of the parentheses. A more sensible 
+  abstraction is the VLOOKUP function. </p>
+<h3><font color="#FF6600">Lookup Table</font></h3>
+<p>VLOOKUP requires you to create a matrix first with cutoffs for the ranges you're 
+  looking up and what the result will be for each given range. </p>
+<p><b>The first column of the lookup table must be sorted in ascending order</b>. 
+  If your VLOOKUP function isn't working, this is likely the problem. </p>
+<p>We'll begin by creating a sample table of a mapping of numeric grades into 
+  letter grades: </p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr> 
+    <td> 
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">1</font></b></td>
+    <td><b>Cutoff</b></td>
+    <td><b>Letter Grade</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">2</font></b></td>
+    <td>0</td>
+    <td>F</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td>60</td>
+    <td>D</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td>70</td>
+    <td>C</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td>80</td>
+    <td>B</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">6</font></b></td>
+    <td>90</td>
+    <td>A</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">7</font></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">8</font></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<h3><font color="#FF6600">Problem</font></h3>
+<p>What is the address of this table? </p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">VLOOKUP Syntax</font></h3>
+<p>Syntax:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>VLOOKUP</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>cellToLookupInFirstRowOfMatrix<font color="#0000FF"><b>,</b></font> 
+  addressOfMatrix<font color="#0000FF"><b>,</b></font> columnOfResult<font color="#0000FF"><b>)</b></font></font></p>
+<p>The three parameters to the function:</p>
+<ul>
+  <li><font face="Courier New, Courier, mono"><b>cellToLookupInFirstRowOfMatrix</b></font> 
+    -- For the argument, give the address of the cell you're looking up in the 
+    table. </li>
+  <li><font face="Courier New, Courier, mono"><b>addressOfMatrix</b></font> -- 
+    For the argument, give the cell address of the lookup matrix. In almost all 
+    cases, you'll want to use absolute referencing. </li>
+  <li><font face="Courier New, Courier, mono"><b>columnOfResult</b></font> -- 
+    For the argument, give a natural number representing the column whose value 
+    you want to display as the result. The first column in the matrix is &quot;1&quot;; 
+    the second is &quot;2&quot;; etc. Usually, you'll use &quot;2&quot; here, 
+    but if you have a larger table, larger numbers maybe appropriate. </li>
+</ul>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Letter Grade Example</font></h3>
+<p>Suppose we're in the same sheet as before and have the following data: </p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr> 
+    <td> 
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td> 
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">11</font></b></td>
+    <td><b>Number Grade </b></td>
+    <td><b>Letter Grade</b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">12</font></b></td>
+    <td>95</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">13</font></b></td>
+    <td>76</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> 
+    <td><b><font color="#6600CC">14</font></b></td>
+    <td>82</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Write a formula for B12 to look up the letter grade. </p>
+<p>Three arguments:</p>
+<ul>
+  <li><font face="Courier New, Courier, mono"><b>cellToLookupInFirstRowOfMatrix</b></font> 
+    = <font face="Courier New, Courier, mono">A12</font> since that's where the 
+    number grade is. </li>
+  <li><font face="Courier New, Courier, mono"><b>addressOfMatrix</b></font> = 
+    <font face="Courier New, Courier, mono">$A$2:$B$6</font>, from above. </li>
+  <li><font face="Courier New, Courier, mono"><b>columnOfResult</b></font> = 2, 
+    as we want letter grades from the 2nd column of the table.</li>
+</ul>
+<p>The result: </p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono" color="#0000FF"><b>VLOOKUP</b></font><font face="Courier New, Courier, mono"><strong><font color="#0000FF">(</font></strong>A12<font color="#0000FF"><b>,</b></font> 
+  <font face="Courier New, Courier, mono">$A$2:$B$6</font><font color="#0000FF"><b>,</b></font> 
+  2<font color="#0000FF"><b>)</b></font></font></p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Exact match or Range lookup?</font></h3>
+<p>There may be times when you want to force Excel to find an <i>exact</i> match 
+  in your lookup table. To do so, add a fourth argument of <font face="Courier New, Courier, mono">FALSE</font>. 
+  If it's omitted, Excel assumes <font face="Courier New, Courier, mono">TRUE</font>, 
+  that you do want to find the closest matching range. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#absolute">Absolute Referencing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_wiz">Function 
+  Wizard</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#if">Conditionals: IF</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#vlookup">Conditionals: VLOOKUP</a></font></p>
+</body>
+</html>

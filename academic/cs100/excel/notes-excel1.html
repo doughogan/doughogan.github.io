@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CS 100: Excel I</title>
+</head>
+
+<body>
+<h1 align="center"><font color="#FF6600">Excel: Basics &amp; Formulas I</font></h1>
+<div align="right"><font size="1">Last Modified
+  <!-- #BeginDate format:Am3 -->02/19/2016<!-- #EndDate -->
+</font></div>
+<p align="center"><font size="1">&nbsp;<a href="#intro">Some Basics</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#insert">Inserting/Deleting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying Formulas</a> </font></p>
+<hr>
+<h2><font color="#FF6600"><a name="basics"></a>Some Basics</font></h2>
+<p>We'll be looking at Excel in the next few Fridays/labs. Excel is an example of spreadsheet software. Nearly everything we'll do translates pretty similarly to other spreadsheet programs, e.g. Numbers, Google Sheets.</p>
+<h3><font color="#FF6600">Addresses</font></h3>
+<p>Row names: 1, 2, 3, ...<br>
+  Column names: A, B, C, ...</p>
+<p>Cells are at the intersection of rows and columns. The address is formed from 
+  the row and column names, e.g. A1, A2, ..., B1, B2, ... </p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Formatting Cells</font></h3>
+<p>Any formats applied here apply to selected cells. Available from <b>Format 
+  &gt; Cells</b> or <b>Right-click &gt; Format Cells</b>. </p>
+<p>Sometimes you'll want to set cells to be specifically numeric (vs. text) or dates or other things. By default, numeric values (including dates and times) are right-aligned and non-numeric values are left-aligned.</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Adjusting Column Widths and Row 
+  Heights </font></h3>
+<p>Most common way: Click and drag between row/column headers. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1">&nbsp;<a href="#intro">Some Basics</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#insert">Inserting/Deleting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying Formulas</a></font><span style="text-align: center"></span></p>
+<hr>
+<h2><font color="#FF6600"><a name="insert"></a>Inserting &amp; Deleting Cells, 
+  Rows, and Columns</font></h2>
+<h3><font color="#FF6600">Inserting Rows or Columns</font></h3>
+<ol>
+  <li>Select the row (or column)</li>
+  <li>Right-click the row (or column) header</li>
+  <li>Select <b>Insert</b></li>
+</ol>
+<p>New row (or column) is above (to the left of) selected row (column).</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Deleting Rows or Columns</font></h3>
+<ol>
+  <li>Select the row (or column)</li>
+  <li>Right-click the row (or column) header</li>
+  <li>Select <b>Delete</b></li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Individual Cells</font></h3>
+<ol>
+  <li>Select cell </li>
+  <li>Right-click the cell</li>
+  <li>Select <b>Insert </b>or <b>Delete</b></li>
+  <li>Decide how to shift cells in the dialog</li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Caution</font></h3>
+<p>Be careful when formulas are involved. If you insert/delete in the middle of 
+  a range, the range is expanded/contracted. If you insert/delete at the boundary 
+  of a range, you may need to reprogram formulas. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1">&nbsp;<a href="#intro">Some Basics</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#insert">Inserting/Deleting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying Formulas</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="formula"></a>Formulas: The Basics</font></h2>
+<p>The real power in Excel lies within the ability to use formulas. The program 
+  allows you to perform complex calculations and has many built-in functions to 
+  add to its usefulness.</p>
+<h3><font color="#FF6600">Formula Bar</font></h3>
+<ul>
+  <li>As with data and labels, you can enter formulas into cells and see them 
+    echoed in the formula bar. </li>
+  <li>Becomes very useful when you are entering a formula into a cell and you 
+    need to scroll in the worksheet to find the address of another cell. </li>
+</ul>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Specifying a Formula: the framework</font></h3>
+<ol>
+  <li>Select the cell where you want to enter a formula</li>
+  <li>Type =. That lets Excel know you are entering a formula, not text.</li>
+  <li>Finish your formula</li>
+  <li>Type <b>Enter </b>to see the results displayed.</li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Examples</font><br>
+</h3>
+<ul>
+  <li><font face="Courier New, Courier, mono">=A5</font> echoes whatever is in 
+    A5 in the selected cell. </li>
+  <li><font face="Courier New, Courier, mono">=A5+A6</font> adds the contents 
+    of A5 and A6 and puts the result in the selected cell. </li>
+</ul>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Discussion</font></h3>
+<ul>
+  <li>What happens if you forget the <b>=</b>?<br>
+  </li>
+  <li>If you change what's in A5, do you need to change the formula in the second 
+    example? </li>
+</ul>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1">&nbsp;<a href="#intro">Some Basics</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#insert">Inserting/Deleting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying Formulas</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="operators"></a>Excel Operators</font></h2>
+<p>There are 5 built-in <b>(arithmetic) operators</b> in Excel: <font face="Courier New, Courier, mono">+, 
+  -, *, /, ^</font>. They operate on combinations of cell addresses and numeric 
+  constants. </p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <td><b>Operator</b></td>
+    <td><b>Example</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td><div align="center"><font face="Courier New, Courier, mono">+</font></div></td>
+    <td><div align="center"><font face="Courier New, Courier, mono">=A1+A2</font></div></td>
+    <td><b>Addition</b>: adds the contents of A1 and the contents of A2, returns 
+      the sum</td>
+  </tr>
+  <tr>
+    <td><div align="center"><font face="Courier New, Courier, mono">-</font></div></td>
+    <td><div align="center"><font face="Courier New, Courier, mono">=A1-A2</font></div></td>
+    <td><b>Subtraction</b>: subtracts the contents of A2 from the contents of 
+      A1, returns the difference</td>
+  </tr>
+  <tr>
+    <td><div align="center"><font face="Courier New, Courier, mono">*</font></div></td>
+    <td><div align="center"><font face="Courier New, Courier, mono">=A1*A2</font></div></td>
+    <td><b>Multiplication</b>: multiplies the contents of A1 and the contents 
+      of A2, returns the product</td>
+  </tr>
+  <tr>
+    <td><div align="center"><font face="Courier New, Courier, mono">/</font></div></td>
+    <td><div align="center"><font face="Courier New, Courier, mono">=A1/A2</font></div></td>
+    <td><b>Division</b>: divides the contents of A1 by the contents of A2, returns 
+      the quotient</td>
+  </tr>
+  <tr>
+    <td><div align="center"><font face="Courier New, Courier, mono">^</font></div></td>
+    <td><div align="center"><font face="Courier New, Courier, mono">=A1^A2</font></div></td>
+    <td><b>Exponentiation/Power</b>: raises the contents of A1 to the power of 
+      the contents of A2, returns the result</td>
+  </tr>
+</table>
+<p>Arithmetic formulas may contain:</p>
+<ul>
+  <li>one or more terms joined by any of the above operators</li>
+  <li>terms grouped in parentheses, such that the standard order of operations 
+    applies</li>
+  <li>spaces</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1">&nbsp;<a href="#intro">Some Basics</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#insert">Inserting/Deleting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying Formulas</a></font><span style="text-align: center"></span></p>
+<hr>
+<h2><font color="#FF6600"><a name="formula_ex"></a>Formula Examples</font></h2>
+<h3><font color="#FF6600">Generic Examples</font></h3>
+<p> Here are some generic examples of syntactically-correct formulas:</p>
+<ul>
+  <li><font face="Courier New, Courier, mono">=B5*5</font></li>
+  <li><font face="Courier New, Courier, mono">=A2/B2+2 </font></li>
+  <li><font face="Courier New, Courier, mono">=A2/(B2 + 2)</font></li>
+  <li><font face="Courier New, Courier, mono">=C5 + D4 + B2 </font></li>
+  <li><font face="Courier New, Courier, mono">=3.14*(B1 - B2)^2 </font></li>
+  <li><font face="Courier New, Courier, mono">=(0.01*B2 + 5) - 5</font><br>
+  </li>
+</ul>
+<h3>&nbsp;</h3>
+<h3><font color="#FF6600">Example</font></h3>
+<p>Suppose you have the following sheet. </p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <td><div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div></td>
+    <td><div align="center"><font color="#6600CC"><b>A</b></font></div></td>
+    <td><div align="center"><font color="#6600CC"><b>B</b></font></div></td>
+    <td><div align="center"><font color="#6600CC"><b>C</b></font></div></td>
+    <td><div align="center"><font color="#6600CC"><b>D</b></font></div></td>
+    <td><div align="center"><font color="#6600CC"><b>E</b></font></div></td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">1</font></b></td>
+    <td><b><i>Cylinder Data</i></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">2</font></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td><b>Height</b></td>
+    <td><b>Radius</b></td>
+    <td><b>Volume</b></td>
+    <td><b>Surface Area</b></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td>10</td>
+    <td>2</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td>12</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>The volume of a cylinder is given by <i>V</i> = &pi;<i>r</i><sup>2</sup><i>h</i>, 
+  where <i>r</i> is the radius of the cylinder and <i>h</i> is the height. </p>
+<ol type="a">
+  <li>What is the address of the cell where we'll want a formula for the volume 
+    for the first given cylinder?<br>
+    <i>C4</i></li>
+  <li>What is the formula?<br>
+    =&pi;<i>r</i><sup>2</sup><i>h</i><br>
+    =&pi;<i>*(r</i><sup>2</sup>)*<i>h</i><br>
+    =3.14159*<i>(r</i><sup>2</sup>)*<i>h</i><br>
+    =3.14159*(B4^2)*<i>h</i><br>
+    =3.14159*(B4^2)*A4 <br>
+  </li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem</font></h3>
+<p>The surface area of a cylinder is given by <i>A</i> = 2&pi;<i>rh 
+  + </i>2&pi;<i><i>r</i><sup>2</sup></i>, where <i>r</i> is the radius of the cylinder and <i>h</i> is the height. Suppose we wish to 
+  calculate the surface area of the cylinder described by the data in row 5. </p>
+<ol type="a">
+  <li>What is the address of the cell where we'll want the formula?<br>
+    <br>
+  </li>
+  <li>What is the formula?</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><a href="#print"><font size="1">Printing</font></a><font size="1">&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#print_area">Print 
+  Area</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#page_setup"> Page Setup</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula 
+    Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying 
+      Formulas</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="copy_formula"></a>Copying Formulas &amp; Relative 
+  Referencing </font></h2>
+<p>When you copy a formula and paste it into another cell, the addresses in the 
+  formula change. The change is relative to the original cell. If the formula 
+  is pasted into a location <i>c</i> columns to the right of its original location 
+  and <i>r</i> rows below its original location, all cell references are adjusted 
+  by <i>c </i>columns and <i>r</i> rows. </p>
+<h3><font color="#FF6600">Example</font></h3>
+<p>Suppose you initially have the formula <font face="Courier New, Courier, mono">=C3*5 + 1</font> in the cell <font face="Courier New, Courier, mono">D3</font>. When it is copied 
+  and pasted into cell D4, it changes. What is the new formula?</p>
+<ul>
+  <li>D4 is one row below its original location, so the row reference is adjusted 
+    by one. 3 is the row number in the cell reference C3, so it moves down by 
+    one too, becoming C4. </li>
+  <li>5 and 1 are constants; they are unchanged. </li>
+</ul>
+<p>Therefore, the new formula is =<font face="Courier New, Courier, mono">C4*5 + 1</font>.</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem </font></h3>
+<p>Suppose you initially have the formula <font face="Courier New, Courier, mono">=C3*5+1</font> in the cell <font face="Courier New, Courier, mono">D3</font>. What does the 
+  formula become when it is copied and pasted to the following locations?</p>
+<ol type="a">
+  <li>D6<br>
+    <br>
+    <br>
+  </li>
+  <li>E7</li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem </font></h3>
+<p>Suppose you initially have the formula <font face="Courier New, Courier, mono">=(H6+H7)/5+A4^B4</font> in the cell <font face="Courier New, Courier, mono">H8</font>. </p>
+<ol type="a">
+  <li>Write this formula in a more natural algebraic style on paper. <br>
+    <br>
+    <br>
+  </li>
+  <li>What does the formula become when it is copied and pasted to the cell <font face="Courier New, Courier, mono">K5</font>?</li>
+</ol>
+<p>&nbsp;</p>
+<h3>&nbsp;</h3>
+<h3><font color="#FF6600">Fill Down</font></h3>
+<p>You can copy and paste a formula several times, but there's a quicker way to 
+  fill a column with an isomorphic formula called <b>Fill Down</b>.</p>
+<ol>
+  <li>Highlight the cell containing the original formula and as many cells below 
+    it as you like.</li>
+  <li><b>Edit &gt; Fill &gt; Down</b> or <b>Ctrl+D</b>.</li>
+</ol>
+<p>This puts a new copy of the formula in every highlighted cell, with the references 
+  adjusted appropriately.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1">&nbsp;<a href="#intro">Some Basics</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#insert">Inserting/Deleting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula">Formula Basics</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#operators">Operators</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#formula_ex">Formula Examples</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#copy_formula">Copying Formulas</a></font></p>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Multiple Tables and Subqueries</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<p align="center"><font size="1"><i>Notes prepared by Doug Hogan. For educational use only by students wishing to learn the basics of SQL.</i></font></p>
+<hr>
+
+
+<h1 align="center"><font color="#336600">Working with Multiple Tables and Subqueries </font></h1>
+<p align="right"><font size="-1">Last Modified 
+  <!-- #BeginDate format:Am2 -->4/5/16<!-- #EndDate --></font>
+</p>
+
+<p align="center">
+	<font size="1">
+		<a href="#foreignkey">Foreign Keys</a> &bull; 
+		<a href="#subquery">Subqueries: Single Output</a> &bull; 
+		<a href="#subq_list">Subqueries: List Output</a> &bull; 
+		<a href="#join">Joining Tables</a>  
+</font></p>
+<hr>
+<h2><font color="#336600"><a name="foreignkey"></a>Defining Tables with Foreign Keys </font></h2>
+<p><strong>Recall: </strong>What is a foreign key? </p>
+<p>&nbsp;</p>
+<p>Earlier,  we learned how to set up a constraint for a primary key in a database table. Like before, I'll give you the code for this, more for the curious than as something you'll have to use in Access. Here is the general form of how to set up a foreign key constraint, which goes in a <font face="Courier New, Courier, mono">create table</font> statement:</p>
+<blockquote>
+  <pre><font color="#336600"><strong><font color="#000066">constraint fk_</font></strong></font><em>foreignKeyName</em><font color="#000066"><strong> foreign key ( </strong></font><em>foreign key field name in this table</em><font color="#000066"><strong> )
+           references </strong></font><em>foreignTableName</em><font color="#000066"><strong><strong> ( </strong></strong></font><em>matching field name in foreign table</em><font color="#000066"><strong><strong> )</strong></strong></font></pre>
+</blockquote>
+<p>This links a field in the current table to a field in another table. Note the following:</p>
+<ul>
+  <li>The foreign key must reference the primary key in another table.</li>
+  <li>When choosing the name of the foreign key field in this table, I suggest you use the same field name as you used for the primary key in the other table when possible. </li>
+</ul>
+<h3><strong><font color="#006600">Example</font></strong></h3>
+<p>Let's build on to our <font face="Courier New, Courier, mono">courses</font> database we used earlier. First, let's add the following table, for buildings: </p>
+<blockquote>
+  <pre>create table buildings<br>(<br>   building_id smallint not null,                       /* id, the primary key             */<br>   name varchar(40),                                    /* full name of the building       */<br>   abbrev varchar(6),                                   /* short name of the building      */<br>   map_loc varchar(2),                                  /* location on map grid, e.g. 'A2' */<br>   constraint pk_building primary key (building_id)<br>);</pre>
+</blockquote>
+<p>Next, let's create a table that stores all of the sections of courses that are currently being offered. We'd like to store information about the course, but, as a course has many sections, we'll use one entry in the courses table to describe the course and have many entries in the sections table for each course. Instead of having all of the same data stored in the <font face="Courier New, Courier, mono">sections</font> table we have in the <font face="Courier New, Courier, mono">courses</font> table, we'll instead store only the primary key of the correct record in the <font face="Courier New, Courier, mono">courses</font> table in the <font face="Courier New, Courier, mono">sections</font> table, thereby creating a relationship (hence <em>relational database</em>).</p>
+<p>We'll do the same for the building. Here's the  code to create the table  <font face="Courier New, Courier, mono">sections</font> with the foreign key definition in color: </p>
+<blockquote>
+  <pre>create table sections
+(
+   sched_no integer not null,                    /* schedule number used by registrar, primary key               */
+   course_id smallint,                           /* id of the course, foreign key to the courses table           */ 
+   section smallint,                             /* section number                                               */
+   building_id smallint,                         /* id of the building, foreign key to the buildings table       */
+   room smallint,                                /* room in building given by building_id where the course meets */
+   days varchar(7),                              /* days course meets, e.g. 'MWF' -- using MTWRFSY               */
+   start_time time,                              /* time course meetings start                                   */
+   end_time time,                                /* time course meetings end                                     */
+
+   constraint pk_sections primary key(sched_no),
+   <font color="#000066"><strong>constraint fk_course_id foreign key (course_id) references courses (course_id), 
+   constraint fk_building_id foreign key (building_id) references buildings (building_id)</strong></font>
+);</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="right"><font size="-1"></font> </p>
+<p align="center"> <font size="1"> <a href="#foreignkey">Foreign Keys</a> &bull; <a href="#subquery">Subqueries: Single Output</a> &bull; <a href="#subq_list">Subqueries: List Output</a> &bull; <a href="#join">Joining Tables</a> </font></p>
+<hr>
+<h2><font color="#336600"><a name="subquery"></a>Starting Subqueries  </font></h2>
+<p><strong>Problem: </strong>Write a query to retrieve the <font face="Courier New, Courier, mono">course_id</font> field of CS 100 from the courses table.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Note that this query will return a single value for its result. </p>
+<p>Now consider the following statement to insert a second section of 100: </p>
+<blockquote>
+  <pre>insert into sections<br>   (sched_no, course_id, section, building_id, room, days, start_time, end_time)<br>   values (362482, (select course_id from courses where dept = 'CS' and number = 100), 2, <br>           (select building_id from buildings where abbrev = 'BH'), 
+           305, 'MWF', '15:00', '15:50'); </pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>This query makes use of two <strong>subqueries</strong>, i.e. queries with a SQL statement. In each case, we know the subqueries return a single value, which we can substitute right into the statement without chance of error. </p>
+<p>This saves us work. See the first truth above. In the example, we never <em>really</em> needed to know the values of the keys to the <font face="Courier New, Courier, mono">courses</font> and <font face="Courier New, Courier, mono">buildings</font> table; they worked behind the scenes for us. </p>
+<p>It's important to know what kind of results subqueries will return:</p>
+<ul>
+  <li>You could use them to retrieve a single data field from a single record, as above. In such cases, you need to be sure you're placing the subquery where you'd otherwise place a single value. You must also make sure the result is of the correct type. </li>
+  <li>You could use them to retrieve a field from several records, effectively returning a list. We'll see how to use this below. </li>
+</ul>
+<p><strong>Example:</strong> Let's say we want to print out a nice looking listing of what sections of courses are offered in which rooms. ID numbers don't mean too much, so here we use subqueries to display more meaningful information:</p>
+<blockquote>
+  <pre>select (select dept from courses where course_id = s.course_id) dept, <br>       (select number from courses where course_id = s.course_id) num, <br>       section, <br>       (select name from buildings where building_id = s.building_id) building,<br>       room<br>  from sections s; </pre>
+</blockquote>
+<p>Notice that because field names are repeated across tables, we need to use a name for the <font face="Courier New, Courier, mono">sections</font> table in this query. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="right"><font size="-1"></font> </p>
+<p align="center"> <font size="1"> <a href="#foreignkey">Foreign Keys</a> &bull; <a href="#subquery">Subqueries: Single Output</a> &bull; <a href="#subq_list">Subqueries: List Output</a> &bull; <a href="#join">Joining Tables</a> </font></p>
+<hr>
+<h2><font color="#336600"> <a name="subq_list"></a>Subqueries Returning Lists </font></h2>
+<p>Recall the <font face="Courier New, Courier, mono">in</font> operator we can use in Boolean expressions. It requires that we supply a list. Before, we learned how to hardcode a list, but we can also use a subquery to generate a list. </p>
+<p>Let's say we want to generate a listing of rooms for courses that are three credits. </p>
+<p><strong>Problem: </strong>Write a query on the <font face="Courier New, Courier, mono">courses</font> table to return all the IDs for 3-credit courses. </p>
+<p>&nbsp;</p>
+<p>It's important that this query returns a one-dimensional list. Now, let's use it as a subquery to filter our results: </p>
+<blockquote>
+  <pre>select (select dept from courses where course_id = s.course_id) dept, <br>       (select number from courses where course_id = s.course_id) num, <br>       section, <br>       (select name from buildings where building_id = s.building_id) building,<br>       room<br>  from sections s<br> where course_id in (select course_id from courses where credits = 3); </pre>
+</blockquote>
+<p>&nbsp;</p>
+<p><strong>Problem: </strong>Write a query to tell  the number and section of all sections of courses that are at the 100-level. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="right"><font size="-1"></font> </p>
+<p align="center"> <font size="1"> <a href="#foreignkey">Foreign Keys</a> &bull; <a href="#subquery">Subqueries: Single Output</a> &bull; <a href="#subq_list">Subqueries: List Output</a> &bull; <a href="#join">Joining Tables</a> </font></p>
+<hr>
+<h2><font color="#336600"><a name="join"></a>Joining Tables </font></h2>
+<p>We can retrieve data across multiple tables in a different way than using a subquery: using a <strong>join operator</strong>, which merges the data in two tables into a single result table. To do this, we need to have an established foreign key relationship between the tables we wish to join. We need specify the fields that link the tables -- generally the foreign key of one table and the primary key of another. We do so using the <font face="Courier New, Courier, mono">on</font> clause. </p>
+<p>The specific kind of join we'll look at is an <strong>inner join</strong>, which returns a row for each unique row in both tables by matching values that are common. The output is a table that is then to be used in the <font face="Courier New, Courier, mono">from</font> clause. </p>
+<p>Consider the following general form: </p>
+<blockquote>
+  <pre><em>tableName1 t</em> <strong><font color="#000066">inner join</font></strong> <em>tableName2</em> <em>u</em>
+   <font color="#000066"><strong>on</strong></font> <em>t.fieldName </em>= <em>u</em>.<em>fieldName
+</em></pre>
+</blockquote>
+<p><strong>Example 1: </strong>The following query merges the records of the <font face="Courier New, Courier, mono">sections</font> and <font face="Courier New, Courier, mono">courses</font> tables: </p>
+<blockquote>
+  <pre>select *<br>  from sections s inner join courses c on s.course_id = c.course_id;</pre>
+</blockquote>
+<p>Suppose we wanted only certain fields: </p>
+<blockquote>
+  <pre>  select c.dept, c.number, s.section, s.days, s.start_time<br>    from sections s inner join courses c on s.course_id = c.course_id<br>order by c.number, s.section;</pre>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote></blockquote>
+<p><strong>Problem: </strong>Let's add to the last example and illustrate the use of subqueries and joins at the same time. Using at least one subquery to aid yourself, also display the building and room number where each section occurs. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<blockquote></blockquote>
+<p><strong>Example 2: </strong>Now let's look at the same problem using  joins only:</p>
+<blockquote>
+  <pre> select c.dept dept, c.number num, s.section section, b.name building, <br>        s.room room, s.days days, s.start_time time<br>   from sections s inner join courses c on s.course_id = c.course_id<br>                   inner join buildings b on s.building_id = b.building_id;</pre>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Note that there are other kinds of join operations, but they're beyond the scope of this course. </p>
+<p>&nbsp;</p>
+<p align="right"><font size="-1"></font> </p>
+<p align="center"> <font size="1"> <a href="#foreignkey">Foreign Keys</a> &bull; <a href="#subquery">Subqueries: Single Output</a> &bull; <a href="#subq_list">Subqueries: List Output</a> &bull; <a href="#join">Joining Tables</a></font></p>
+</body>
+</html>

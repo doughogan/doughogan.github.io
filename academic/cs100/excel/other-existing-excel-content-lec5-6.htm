@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>CMPSC 100</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1 align="center"><font color="#FF6600">Excel: Multiple Worksheets and Sorting</font></h1>
+<div align="right"> 
+  <p><font size="1">Last Modified 
+    <!-- #BeginDate format:Am3 -->10/24/2003<!-- #EndDate -->
+    </font> </p>
+</div>
+<p align="center"> <a href="#workbook"><font size="1">Working with Multiple Sheets</font></a><font size="1">&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#addr">Addressing across Sheets</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sorting">Sorting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#algo">A Taste of Algorithm Theory</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="workbook"></a>Working with Multiple Worksheets</font></h2>
+<p><b>Worksheet</b> = one spreadsheet, what we've been using all along</p>
+<p>Several worksheets make up a <b>workbook</b>, which is what is really stored 
+  in an Excel file. </p>
+<p>Why might one use mutliple worksheets? </p>
+<p>You can find the worksheets in a workbook by looking at the sheet tabs in the 
+  bottom left of the Excel window. </p>
+<h3><font color="#FF6600">Worksheet Tasks</font></h3>
+<table border="1" cellspacing="1" cellpadding="3">
+  <tr> 
+    <td><b>Task</b></td>
+    <td><b>How to do it</b></td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">view</font></b> a worksheet</td>
+    <td> 
+      <ol>
+        <li>click on its sheet tab</li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">rename</font></b> a worksheet</td>
+    <td> 
+      <ol>
+        <li>double-click its sheet tab</li>
+        <li> type a new name</li>
+        <li>press <b>Enter</b></li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">insert</font></b> a new worksheet</td>
+    <td> 
+      <ol>
+        <li>right-click on the tab for the sheet after where you'd like a new 
+          sheet</li>
+        <li>choose <b>Insert</b></li>
+        <li>double-click <b>Worksheet</b></li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">delete</font></b> a worksheet</td>
+    <td> 
+      <ol>
+        <li>right-click on the sheet tab</li>
+        <li>choose <b>Delete</b></li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">move</font></b> a worksheet</td>
+    <td> 
+      <ol>
+        <li>right-click on the tab for the sheet you want to move</li>
+        <li>choose <b>Move or Copy</b></li>
+        <li>double-click a location (you move the sheet to be before your choice)</li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">copy</font></b> a worksheet</td>
+    <td> 
+      <ol>
+        <li>right-click on the tab for the sheet you want to copy</li>
+        <li>choose <b>Move or Copy</b></li>
+        <li>click the <b>Create a copy</b> checkbox</li>
+        <li>double-click a location (you move the sheet to be before your choice)</li>
+      </ol>
+    </td>
+  </tr>
+  <tr> 
+    <td><b><font color="#FF6600">move</font></b> a worksheet<br>
+      (with the mouse)</td>
+    <td> 
+      <ol>
+        <li>click and drag its sheet tab</li>
+      </ol>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Scrolling through Sheet Tabs</font></h3>
+<p><img src="excel_sheet_tabs.jpg" width="672" height="170"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><a href="#workbook"><font size="1">Working with Multiple Sheets</font></a><font size="1">&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#addr">Addressing across Sheets</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sorting">Sorting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#algo">A Taste of Algorithm Theory</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="addr"></a>Addressing Across Multiple Worksheets 
+  </font></h2>
+<h3><font color="#FF6600">Addressing formats</font></h3>
+<p>The sheet name can be added to any cell address. It's separated from the cell 
+  address by an exclamation point. (If no sheet name is given, Excel assumes the 
+  current sheet.)</p>
+<ul>
+  <li>If the sheet name does not include spaces: <font face="Courier New, Courier, mono"><b>SheetName<font color="#FF6600">!</font>CellAddress</b></font></li>
+  <li> If the sheet name does include spaces: <font face="Courier New, Courier, mono"><b>'Sheet 
+    Name'<font color="#FF6600">!</font>CellAddress</b></font></li>
+</ul>
+<p>You can use the mouse here too: whenever you want to use a cell address from 
+  another sheet, click its sheet tab first, then select the cell(s), then continue 
+  editing your formula in the formula bar. </p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Examples</font></h3>
+<ul>
+  <li><font face="Courier New, Courier, mono">=Sheet2!A1+Sheet4!A1</font></li>
+  <li><font face="Courier New, Courier, mono">=SUM('New Name for this Worksheet'!A2:A5)</font></li>
+</ul>
+<p>What do they mean? </p>
+<h3>&nbsp;</h3>
+<p align="center"><a href="#workbook"><font size="1">Working with Multiple Sheets</font></a><font size="1">&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#addr">Addressing across Sheets</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sorting">Sorting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#algo">A Taste of Algorithm Theory</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="sorting"></a>Sorting Data in Excel</font></h2>
+<h3><font color="#FF6600">Motivating Example</font></h3>
+<p>Let's look at <a href="gpa_5_3b.xls">a slightly modified version of the GPA 
+  spreadsheet</a>.</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Steps to Sort</font></h3>
+<ol>
+  <li>Highlight the appropriate part of the sheet (as per the example)</li>
+  <li>Go to <b>Data &gt; Sort</b></li>
+  <li>Choose options for sorting in the <b>Sort</b> dialog: </li>
+  <ul>
+    <li><b>Sort by:</b> Here you choose the column by which your data will be 
+      sorted. 
+      <ul>
+        <li>All other highlighted data in the same row will travel along.</li>
+        <li>The new order of the rows will be based on this column. </li>
+        <li>If you have headers entered in your worksheet, they will appear here, 
+          rather than &quot;Column A,&quot; &quot;Column B,&quot; etc. </li>
+      </ul>
+    </li>
+    <li><b>Sort Order:</b> You can sort in one of two orders: 
+      <ul>
+        <li><b>Ascending</b> (alphabetical and counting &#133;1, 2, 3,&#133;) 
+        </li>
+        <li><b>Descending</b> (reverse alphabetical and counting &#133;3, 2, 1&#133;) 
+        </li>
+      </ul>
+    </li>
+    <li><b>Header Row?</b> 
+      <ul>
+        <li>If the first row you highlighted contains titles for each of the columns, 
+          choose the <b>Header Row</b> option. This first row will then be ignored 
+          in the sorting, and will remain the first row. </li>
+        <li>Otherwise, choose <b>No Header Row</b>. <br>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <li>Click <b>OK</b>.</li>
+</ol>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">&quot;Tie-Breaking&quot;</font></h3>
+<p>If two values in the column you choose to <b>Sort by</b> are the same, you 
+  may want a method of resolving &quot;ties.&quot; Excel lets you do three levels 
+  of sorting. </p>
+<p>In the <b>Sort</b> dialog from step 3 above, use the <b>Then by</b> fields 
+  for multiple levels of sorting. </p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Example</font></h3>
+<p>Back to the GPA. We'll look at courses by number of credits, with ties resolved 
+  by looking at the grades. </p>
+<p>&nbsp;</p>
+<p align="center"><a href="#workbook"><font size="1">Working with Multiple Sheets</font></a><font size="1">&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#addr">Addressing across Sheets</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sorting">Sorting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#algo">A Taste of Algorithm Theory</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="algo"></a>A Taste of Algorithm Theory</font></h2>
+<h3><font color="#FF6600">Playing Cards Activity</font></h3>
+<p><a href="cards.htm">Crazy Game of Poker</a></p>
+<h3><font color="#FF6600">Discussion</font></h3>
+<ul>
+  <li>What is an <b>algorithm</b>?</li>
+  <li>How can an algorithm be judged?</li>
+  <li>Why would anyone care about studying them?</li>
+</ul>
+<p><a href="http://www.cs.ubc.ca/spider/harrison/Java/sorting-demo.html" target="_blank">Sorting 
+  Demos</a></p>
+<p>Extra credit opportunity? (Copy of source required.)</p>
+<p>&nbsp;</p>
+<p align="center"><a href="#workbook"><font size="1">Working with Multiple Sheets</font></a><font size="1">&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#addr">Addressing across Sheets</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#sorting">Sorting</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; 
+  <a href="#algo">A Taste of Algorithm Theory</a></font></p>
+<hr>
+<h2><font color="#FF6600">Admistrative</font></h2>
+<ul>
+  <li>Post Survey from Wenyi for Unit 1 is now on Angel. It will be open until 
+    next Friday (10/31). Please complete it by then. It will count as a 10-point 
+    grade for completion to encourage you to complete it. </li>
+</ul>
+<p>&nbsp;</p>
+</body>
+</html>

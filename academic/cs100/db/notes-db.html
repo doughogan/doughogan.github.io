@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Databases</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<div align="center">
+   <table width="100%" border="0"> 
+      <tr>
+         <td width="20%">&nbsp;</td>
+         <td align="center" width="60%">
+            <em><font face="Tahoma, Verdana, Helvetica, sans-serif" color="#336600" size="-1">
+            Notes prepared by D. Hogan</font>
+         </em></td>
+         <td align="right" width="20%">&nbsp;</td>
+      </tr>
+   </table>
+   <hr>
+</div>
+
+
+<h1 align="center"><font color="#990033">Relational Databases</font></h1>
+<p align="right"><font size="-1">Last Modified 
+  <!-- #BeginDate format:Am2 -->10/31/16<!-- #EndDate --></font></p>
+<hr>
+<h2><font color="#990033"><a name="bg"></a>Background</font></h2>
+<p>We wish to store information in the form of <strong>records</strong> on a computer. </p>
+<p>Consider these properties of a <strong>record:</strong></p>
+<ul>
+  <li>Store related data about a person, place, thing, ...</li>
+  <li>Each datum is stored in a <strong>field</strong></li>
+  <li>Fields can be of mixed types</li>
+</ul>
+<p>We'll look into the idea of storing records in databases here. </p>
+<p></p>
+<h3><font color="#990033">Organization of a Database (High Level) </font></h3>
+<table width="0%" border="1" cellspacing="1" cellpadding="3">
+  <tr>
+    <td colspan="4"><div align="center">larger entities &lt;-----&gt; smaller entities</div></td>
+  </tr>
+  <tr>
+    <td><b>Database</b></td>
+    <td><b>Tables</b></td>
+    <td><b>Records</b></td>
+    <td><b>Fields</b></td>
+  </tr>
+  <tr>
+    <td>main framework</td>
+    <td>related data<br>
+      <i>s</i><i>imilar</i> to spreadsheet</td>
+    <td>one row in a table<br>
+      information about one thing</td>
+    <td>one cell in a table<br>
+      corresponds to a column<br>
+      one piece of information</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<hr>
+<h2><font color="#990033">Database Types</font></h2>
+<ul>
+  <li>The most primitive form of a database is a <b>flat file database</b>.
+    <ul>
+      <li>Everything is stored in a plain text file</li>
+      <li>Need a program that is specific to the database to interpret the files </li>
+      <li>We would need to know more about a general programming language like C++ or Java or Python or (many others) to do this</li>
+      <li>Example: A bank might have account information in flat files like these: <a href="notes-db-flat-file-ex1.txt">account 1</a>, <a href="notes-db-flat-file-ex2.txt">account 2</a>, <a href="notes-db-flat-file-ex3.txt">account 3</a></li>
+    </ul>
+  </li>
+  <li>Higher level: <b>relational database</b>.
+    <ul>
+      <li>Uses tables to organize data</li>
+      <li>Related tables can communicate </li>
+      <li>Examples: application software like MS Access; relational database management systems we'll work with through SQL </li>
+    </ul>
+  </li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<h2><font color="#990033">Relational Databases</font></h2>
+<p>We'll  focus  on relational databases, and relational databases are certainly the kind that dominate today. </p>
+<p>We'll start by working with individual tables and then we'll learn how to link multiple tables together. While we can have a database consisting of a single table, most applications use several.</p>
+<p>The relational database model was first proposed by E.F. Codd in 1970. The whole concept is based on the mathematical notion of a relation.</p>
+<p>In practice, while understanding the mathematics behind a relational database sheds some understanding on how it works, the implementation of the model is through a <strong>relational database management system</strong>, abbreviated <strong>RDBMS</strong>, and commands exist that obscure some of the mathematics. </p>
+<p>Various RDBMSs exist: MySQL, Oracle, MS Access, MS SQL Server, etc. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<h2><font color="#990033"><a name="keys"></a>Keys </font></h2>
+<h3><font color="#990033">Primary Keys</font></h3>
+<p>A <strong>primary key </strong>is a field for which a unique entry is required for every record. We can uniquely identify the record from this field alone.</p>
+<p>All well-designed databases ought to have a primary key.</p>
+<p><strong>Examples:</strong> social security numbers for people in a government database, your UIN in a database managed by the registrar, your login ID in the campus computer accounts database, ISBNs for a table of books, etc. </p>
+<p>Primary keys are generally one field, but some database systems allow us to define a <em>compound primary key </em>consisting of multiple fields (e.g. first name and last name -- is this guaranteed to be unique?)</p>
+<p>&nbsp;</p>
+<h3><font color="#990033">Foreign Keys and Table Linkage </font></h3>
+<p>When we have related tables in a database, we need a way of linking them together. Suppose one table has a field that refers to a complete record in another table.</p>
+<p>Let's consider a different form of an old example: Suppose we're maintaining a database of accounts at a bank. Let's say we have a table consisting of the information about accounts. A customer might have both a savings account and a checking account, each of which would be a separate record. Suppose the record contains the customer's contact information and the customer moves. What do we need to do? </p>
+<p>A better design is to maintain customers in a table separate from accounts and have a field in the accounts table that links to the customers table. Each customer's information is stored only once this way. This accounts table field will hold the primary key to the accounts table. </p>
+<p>Such a field that contains the primary key to a record in another table is called a <strong>foreign key</strong>. It is via foreign keys that we define relationships between tables; thus they are very important in relational databases. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p><hr>
+<h2><font color="#990033"><a name="er"></a>Entity-Relationship Modeling</font></h2>
+<p>In designing and working with databases consisting of many tables, it is useful to use a tool called an <strong>entity-relationship diagram</strong> (or ER diagram). ER diagrams tell the following:</p>
+<ul>
+  <li>Each table in the database
+    <ul>
+      <li>Name of the table</li>
+      <li>The primary key of the table</li>
+      <li>All of the fields in the table and their data types</li>
+    </ul>
+  </li>
+  <li>Relationships
+    <ul>
+      <li>Lines between related tables</li>
+      <li>The foreign keys to those tables</li>
+      <li>The kinds of relationships between tables (e.g. one-to-one, one-to-many)  </li>
+  </ul>
+</ul>
+<p>Consider this example, for a system for a university schedule:</p>
+<blockquote>
+  <p><img src="notes-db-er-ex.png" alt="ER Diagram of a database to be used in examples. Each table in portrayed by a box, with the name of the table above the box and a box within it at the top listing the primary key. Table 'courses' has these fields: course_id (the primary key), dept, number, name, credits, num_sections, and major_notes. Table 'buildings' has these fields: building_id, name, abbrev, map_loc. Table 'sections' has these fields: sched_no (the primary key), course_id, section, building_id, room, days, start_time, end_time. Field 'course_id' in 'sections' is a foreign key to 'courses'; there is a line between these tables for this reason. Field 'building_id' in 'sections' is a foreign key to 'buildings'; there is a line between these tables as well." width="464" height="338"></p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<h2><font color="#990033"><a name="er"></a>From Here...</font></h2>
+<p>With the rest of our time today, we'll look at some example data that might live in such a database via an activity. We'll use the following:</p>
+<ul>
+  <li><a href="https://psch.uic.edu/docs/default-source/default-document-library/map---east-campus.pdf?sfvrsn=2">UIC East Campus Map</a></li>
+  <li><a href="http://catalog.uic.edu/ucat/course-descriptions/">UIC Course Descriptions</a></li>
+  <li><a href="https://ossswebcs.admin.uillinois.edu/portal_uic/classsch.html">UIC Class Schedule</a></li>
+</ul>
+<p>With the exception of a last unrelated lab, the plan for the remainder of lab is to continue along this database path:
+</p>
+<ul>
+  <li>First, you'll get acquainted with MS Access to set up a database</li>
+  <li>Next, I'll teach you some basic SQL, a language that lets you do many things with a database, and we'll focus on querying a single database table. You'll get experience with this in lab.</li>
+  <li>Finally, I'll teach you some more SQL and you'll get some experience querying a database with multiple tables. </li>
+</ul>
+</body>
+</html>

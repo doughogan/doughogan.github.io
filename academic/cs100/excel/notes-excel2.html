@@ -1,0 +1,438 @@
+<html>
+<head>
+<title>CS 100: Excel II</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1 align="center"><font color="#FF6600">Excel Formulas II</font></h1>
+<div align="right"> 
+  <p><font size="1">Last Modified 
+    <!-- #BeginDate format:Am3 -->02/19/2016<!-- #EndDate -->
+  </font> </p>
+</div>
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+  <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp;
+  <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;
+  <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;
+  <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;
+  <a href="#func_arith">Functions in Arith. Exprs.</a> </font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;   <a href="#nested">Nested Calls</a> </font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="range"></a>Range Addressing</font></h2>
+<p>It will be useful to have a way of referring to a range of cells. </p>
+<ul><li><strong>Contiguous ranges:</strong> the colon
+        is used to denote a contiguous range, inclusively. Give the address of
+    the upper left cell of the range, then a colon, then the lower right cell
+    of
+      the range.</li>
+  <li><strong>Non-contiguous ranges </strong>are separated by commas (and possibly
+      spaces, but they're not necessary). </li>
+</ul>
+<h3><font color="#FF6600">Example</font></h3>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <td>
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>E</b></font></div>
+    </td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">1</font></b></td>
+    <td><b><i>Cylinder Data</i></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">2</font></b></td>
+    <td>&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td><b>Height</b></td>
+    <td bgcolor="#FF6600"><b>Radius</b></td>
+    <td bgcolor="#FF6600"><b>Volume</b></td>
+    <td bgcolor="#FF6600"><b>Surface Area</b></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td>10</td>
+    <td bgcolor="#FF6600">2</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td>12</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>The orange cells are referred to as the range <font face="Courier New, Courier, mono">B2:D4</font>.</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem</font></h3>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <td>
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>E</b></font></div>
+    </td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">1</font></b></td>
+    <td bgcolor="#FF6600"><b><i>Cylinder Data</i></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">2</font></b></td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td><b>Height</b></td>
+    <td bgcolor="#FFFFFF"><b>Radius</b></td>
+    <td bgcolor="#FF6600"><b>Volume</b></td>
+    <td bgcolor="#FF6600"><b>Surface Area</b></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td bgcolor="#FF6600">10</td>
+    <td bgcolor="#FFFFFF">2</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td bgcolor="#FF6600">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td>12</td>
+    <td>6</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Give the range address for the orange cells. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="func_abstr"></a>Abstraction Revisited and
+Excel Functions</font></h2>
+<h3><font color="#FF6600">Recall: Abstraction</font></h3>
+<ul>
+  <li>Focus on the WHAT, not the HOW</li>
+  <li>Allows us to use complicated things without understanding how they work</li>
+</ul>
+<h3><font color="#FF6600">Function Warm-Up</font></h3>
+<p>The notion of abstraction applies to <strong>functions</strong> in Excel. </p>
+<p>In your GPA assignment, you should have had a formula that looked like this:</p>
+<p align="center"><font face="Courier New, Courier, mono">=E7+E8+E9+E10+E11</font></p>
+<p>We could use a function called sum to achieve the same task:</p>
+<p align="center"><font face="Courier New, Courier, mono">=SUM(E7:E11)</font></p>
+<p>Why does abstraction apply here?</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Function Syntax and Terminology</font></h3>
+<p>A function is an abstraction of some complex calculation. Technically, we're
+  doing a <strong>function
+    call</strong>.
+  The syntax for a function call, generally, is:</p>
+<p align="center"><strong><font color="#0000FF" face="Courier New, Courier, mono">=</font></strong><font face="Courier New, Courier, mono">function_name<strong><font color="#0000FF">(</font></strong>argument_list<strong><font color="#0000FF">)</font></strong></font></p>
+<p>Things in blue are required for every function call. Things in black are replaced
+  appropriately.</p>
+<p>What goes in the parentheses in called a list of <strong>arguments</strong> to
+  the function. The operation for the sum function is exactly the same whether
+  it is given the argument range <font face="Courier New, Courier, mono">E7:E11</font> or
+  the argument range <font face="Courier New, Courier, mono">A1:A2</font>.</p>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Discussion: A Word About Syntax</font></h3>
+<p>Consider the following two formulas:</p>
+<ul>
+  <li><font face="Courier New, Courier, mono">=A1 + A2</font></li>
+  <li><font face="Courier New, Courier, mono">=SUM(A1, A2)</font></li>
+</ul>
+<p>Comment. </p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="func_list"></a>Some Excel Functions</font></h2>
+<table border="1" cellspacing="1" cellpadding="3">
+<tr><td><strong>	<i>Function</i>	</strong></td>
+<td><strong>	<i>Sample Use</i>	</strong></td>
+<td><strong>	<i>Description/Return Value</i>
+</strong></td>
+</tr><tr><td>	<font face="Courier New, Courier, mono">
+=SUM</font> (<em>range</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=SUM(A1:A5) <br>=SUM(A1:A5,B5) </font>	</td><td>	Returns the sum of the cells within the given range
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=AVERAGE</font>(<em>range</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=AVERAGE(B4:F4) </font>	</td><td>	Returns the average of the cells within the given range
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=COUNT</font> (<em>range</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=COUNT(A1:A100) </font>	</td><td>	Counts how many cells in the argument have numerical values, returns the count
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=MIN</font> (<em>range</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=MIN(B2:B50) </font>	</td><td>	Returns the smallest value in the range
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=MAX</font> (<em>range</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=MAX(B2:B50) </font>	</td><td>	Returns the largest value in the range
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=LOG</font> (<em>x, base</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=LOG(B2,10) </font>	</td><td>	Returns the logarithm (of the specified <i>base</i>) of <i>x</i> 
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=EXP</font> (<em>n</em>)	</td>
+<td>	<font face="Courier New, Courier, mono">
+=EXP(2) </font>	</td>
+<td>	Returns <em>e<sup>n</sup></em>, or Euler's number raised to the power of <i>n</i>
+</td></tr><tr><td>	<font face="Courier New, Courier, mono">
+=PI</font> ()	</td><td>	<font face="Courier New, Courier, mono">
+=PI()</font>	</td>
+<td>	Returns &pi;, the mathematical constant pi (stored in the computer's memory
+  to several decimal places)
+</td>
+</tr>
+<tr>
+  <td><font face="Courier New, Courier, mono"> =RAND</font> () </td>
+  <td><font face="Courier New, Courier, mono"> =RAND()</font></td>
+  <td> Returns a random number between 0 and 1 (inclusive of 0 but exclusive of 1)</td>
+</tr>
+<tr><td>	<font face="Courier New, Courier, mono">
+  =SIN</font>(<em>angle</em>)	</td>
+  <td>	<font face="Courier New, Courier, mono">
+    =SIN(PI()/2) </font>	</td><td>	Returns the sine of the angle (measured in radians), likewise for <font face="Courier New, Courier, mono">
+      COS</font> and <font face="Courier New, Courier, mono">
+      TAN</font>
+</td></tr>
+<tr>
+  <td><font face="Courier New, Courier, mono"> =ASIN</font>(<em>number</em>) </td>
+  <td> <font face="Courier New, Courier, mono"> =SIN(A2)</font></td>
+  <td>Returns, in radians, the inverse sine (arcsine) of the number,
+    likewise for <font face="Courier New, Courier, mono"> ACOS</font> and <font face="Courier New, Courier, mono"> ATAN </font></td>
+</tr>
+<tr><td>	<font face="Courier New, Courier, mono">
+=RANK</font> (<em>cell, contiguous_range</em>)
+</td>
+<td>	<font face="Courier New, Courier, mono">
+=RANK(A1,A1:A15)</font>	</td><td>	Returns the rank of the cell within the given contiguous range. 
+ 
+</table>
+<p><br>
+</p>
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="func_prob"></a>Function Examples and Problems</font></h2>
+<h3><font color="#FF6600">Example &amp; Problem</font></h3>
+<p>Give appropriate formulas for B3:B7. </p>
+<table width="0%" border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <td>
+      <div align="center"><b><font color="#6600CC"><font color="#6600CC"><font color="#6600CC">&nbsp;</font></font></font></b></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>A</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>B</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>C</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>D</b></font></div>
+    </td>
+    <td>
+      <div align="center"><font color="#6600CC"><b>E</b></font></div>
+    </td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">1</font></b></td>
+    <td>Data:</td>
+    <td><em>1</em></td>
+    <td><em>2</em></td>
+    <td><em>3</em></td>
+    <td><em>4</em></td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">2</font></b></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">3</font></b></td>
+    <td><strong>Sum:</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">4</font></b></td>
+    <td><strong>Count:</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">5</font></b></td>
+    <td><strong>Average:</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">6</font></b></td>
+    <td><strong>Smallest:</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><b><font color="#6600CC">7</font></b></td>
+    <td><strong>Largest:</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Problem</font></h3>
+<p>Suppose the number 8 is in cell A5. Write a formula that returns its base
+  2 (binary) logarithm.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="mouse_addr"></a>A Little Help
+    from Excel</font></h2>
+<h3><font color="#FF6600">Using the Mouse for Addressing</font></h3>
+<p>Once you're comfortable with the notion of addressing, you can have
+  Excel help you. </p>
+<p>At any point in entering a formula, you can use the mouse to select the <em>arguments</em> of
+  the function. (You'll use the keyboard for things like parentheses, the =,
+  and the function name.)</p>
+<p>(Demo)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="func_arith"></a>Functions and Operators Together</font></h2>
+<p>You can use the results of functions in arithmetic expressions. </p>
+<h3><font color="#FF6600">Example</font></h3>
+<p>Recall the following formula from last Friday: </p>
+<p align="center"> <font face="Courier New, Courier, mono">=3.14159*(B4^2)*A3 </font></p>
+<p>A better way to do this:</p>
+<p align="center"><font face="Courier New, Courier, mono">=PI()*(B4^2)*A3 </font></p>
+<p>Why?</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div align="center">
+  <p><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+</div>
+<hr>
+<h2><font color="#FF6600"><a name="nested"></a>Nested Function Calls</font></h2>
+<p>You can use the results of one function call as an argument to another function 
+  call. </p>
+<p>The &quot;=&quot; is not repeated with the nested calls; it only appears at 
+  the beginning of the formula (unless it's used to test for equality).</p>
+<h3><font color="#FF6600">Examples</font></h3>
+<ul>
+  <li> <font face="Courier New, Courier, mono">=SIN(F8*PI()/180)</font></li>
+  <li><font face="Courier New, Courier, mono">=ASIN((SIN(F8*PI()/180)*C8)/E8)*180/PI()</font></li>
+</ul>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#nested">Nested Calls</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#graphs">Graphs</a></font></p>
+<hr>
+<h2><font color="#FF6600"><a name="graphs"></a>Graphs</font></h2>
+<p>Excel has features built in for creating graphs. The easiest way is through 
+  something called the <b>Chart Wizard</b>.</p>
+<h3><font color="#FF6600">Formatting the Graph</font></h3>
+<p>I'll do a demo of this in class, where we'll make...</p>
+<ul>
+  <li>a bar graph</li>
+  <li>a pie graph from the same data</li>
+</ul>
+<p>&nbsp;</p>
+<h3><font color="#FF6600">Graphs from Ordered Pairs</font></h3>
+<p>Often, when need to make graphs, you are given data in the form of ordered 
+  pairs and you want to plot those points. </p>
+<p>Steps:</p>
+<ol>
+  <li>Have all of the <em>x</em>-axis values in one column. </li>
+  <li>Have all of the <em>y</em>-axis values in another column (you could have 
+    multiple <em>y-</em>axis<em> </em>columns if you want to plot several curves 
+    on the same graph)</li>
+  <li>Select the <em>x-</em>axis column and the <em>y-</em>axis column(s).</li>
+  <li>Go to the Chart Wizard. </li>
+  <li>Select <strong>XY</strong> <strong>(Scatter)</strong> as the <strong>Chart 
+    Type</strong> and an appropriate way of &quot;connecting the dots.&quot;</li>
+  <li>Continue with the chart wizard.</li>
+</ol>
+<p>Caution: do not select the y-axis column labels! This will distort the scale.</p>
+<p>Example: <a href="graph_kinematics_example.xls">Gravity example</a></p>
+<p>&nbsp;</p>
+<p></p>
+<p>
+
+
+<p align="center"><font size="1"><a href="#range">Range Addressing</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_abstr">Functions & Abstraction</a>&nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_list">Function List</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_prob">Function Problems</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#mouse_addr">Addresses using the Mouse</a> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Functions in Arith. Exprs.</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp; <a href="#func_arith">Nested Calls</a></font><font size="1"> &nbsp;&nbsp;&#149;&nbsp;&nbsp;<a href="#nested">Graphs</a></font></p>
+</body>
+</html>

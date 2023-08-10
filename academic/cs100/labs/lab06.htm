@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Functions Assignment</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1><font color="#FF6600">Lab 6: Snell's Law  in Excel</font></h1>
+<p align="right"><font size="1">Last Modified 10/10/03</font></p>
+<h3><font color="#FF6600">Background</font></h3>
+<p>For this assignment, we'll work with an application from physics, specifically
+optics. Here's a little background:</p>
+<p>When light crosses through the boundary between two materials, it bends, a
+  phenomenon known as <em>refraction. </em>The <em>index of refraction</em>,
+  <em>n</em>, of a material is a measure of its optical density, i.e. how much
+  the material distorts the speed of light traveling through
+  it. </p>
+<p>Snell's Law describes the nature of the refraction in terms of the following
+  equation: <font color=#004080><B><em>n</em><font size=-1><SUB>1</SUB></FONT>sin &theta;<font size=-1><SUB>1</SUB></FONT> = <em>n</em><font size=-1><SUB>2</SUB></FONT>sin &theta;<font size=-1><SUB>2</SUB></FONT></B></font>, where <font color=#004080><B>n<font size=-1><SUB>1</SUB></FONT></B></font> is
+  the index of refraction for the first material and <font color=#004080><B>&theta;<font size=-1><SUB>1</SUB></FONT></B></font> gives the
+  angle between a line normal to the boundary between materials 1 and 2. Similarly,
+  <font color=#004080><B><em>n</em><font size=-1><SUB>2</SUB></FONT></B></font> is the
+  index of refraction of the second material and <font color=#004080><B>&theta;<font size=-1><SUB>2</SUB></FONT></B></font> is the angle
+  at which the light travels through the second material. Here is an illustration:</p>
+<p align="center"><img src="snell.jpeg" width="98" height="83"></p>
+<p>We'll work with some hypothetical data for five trials of a Snell's Law experiment
+  where we're given two indices of refraction and the initial angle and we'll
+  solve
+  for the
+  second
+  angle. </p>
+<h3><font color="#FF6600">Directions</font></h3>
+<p>Program the correct formulas as directed. Refer to the list of functions from
+  last class.</p>
+<ol>
+  <li>Download and open <strong>http://www.cs.uic.edu/~hogand/cs100/snell.xls</strong>.<br>
+    <br>
+  </li>
+  <li>Put
+      your name in cells B2. <br>
+      <br>
+  </li>
+  <li>To convert an angle <em>x</em> in degrees to radians, multiply it by &pi;/180.
+    Go to cell G7 and multiply the angle in F7 by this conversion factor. <br>
+    <br>
+  </li>
+  <li>Go to cell H7. Program a formula for the sine of the angle given in this
+    line. <br>
+    <br>
+  </li>
+  <li>Go to cell I7. Here we want a formula for the left side of the Snell's
+    Law equation. Multiply the first index of refraction, found in the column
+    labeled <strong><em>n</em><sub>1</sub></strong>, by the sine of the first angle, which
+    you just calculated and stored in H7. <br>
+    <br>
+  </li>
+  <li>Go to cell J7. Use the fact that <font color=#004080><B><em>n</em><font size=-1><SUB>1</SUB></FONT>sin &theta;<font size=-1><SUB>1</SUB></FONT> = <em>n</em><font size=-1><SUB>2</SUB></FONT>sin &theta;<font size=-1><SUB>2</SUB></FONT></B></font> to program
+    a formula for the appropriate quantity here. (Hint: this is the simplest
+    formula in this assignment, yet you may overlook it due to its simplicity.
+    Think back to our very first examples of formulas.)<br>
+    <br>
+  </li>
+  <li>Go to cell K7. Here we want the value of <font color=#004080><B>sin &theta;<font size=-1><SUB>2</SUB></FONT></B></font>, and we have <font color=#004080><B><em>n</em><font size=-1><SUB>2</SUB></FONT>sin &theta;<font size=-1><SUB>2</SUB></FONT></B></font>in the previous
+    column. Thus, to get<font color=#004080><B> sin &theta;<font size=-1><SUB>2</SUB></FONT></B></font> here, we need
+    to divide<font color=#004080><B><em> n</em><font size=-1><SUB>2</SUB></FONT>sin &theta;<font size=-1><SUB>2</SUB></FONT></B></font>by <font color=#004080><B><em>n</em><font size=-1><SUB>2</SUB></FONT></B></font>. (Look
+    to column E for the value of <font color=#004080><B><em>n</em><font size=-1><SUB>2</SUB></FONT></B></font>.)<br>
+    <br>
+  </li>
+  <li>Now go to cell L7. Cell K7 should have the sine of the second angle from
+    the last step. Here, we want to take the inverse sine of that number to find
+    the second angle. Program the appropriate formula. <br>
+    <br>
+  </li>
+  <li>Go to cell M7. The last calculation gave us an angle in radians, but we'd
+    like an angle in degrees. To convert an angle from radians to degrees, multiply
+    it by 180/&pi;. Program that formula here. <br>
+    <br>
+  </li>
+  <li>We've completed all of the calculations for Trial 1. We'd like to do the
+    same calculations for the other 4 trials. Program similar formulas in cells
+    G8:M11. (That looks like a lot of work, but it's not. If you're spending
+    more than a minute or two on this step, you're making it too hard.)<br>
+    <br>
+  </li>
+  <li>Now we'd like some summary data:
+    <ol>
+      <ul>
+        <li>In cell F13, program a formula to find the <strong>average</strong> initial angle
+        measurement of the five angles given in column F.</li>
+        <li>In cell F14, program a formula for the <strong>smallest</strong> initial angle measurement
+        of the five angles given in column F.</li>
+        <li>  In cell F14, program a formula for the <strong>largest</strong> initial
+        angle measurement of the five angles given in column F.          </li>
+      </ul>
+    </ol>
+    <br>
+  </li>
+  <li>We'd like the same summary data for the angles in the new medium. Go to M13,
+    M14, and M15 and program appropriate formulas. (Again, this step shouldn't
+    take much time.)<br>
+  </li>
+</ol>
+</body>
+</html>
