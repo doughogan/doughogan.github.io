@@ -1,0 +1,50 @@
+<h2><font color="#OO"><font color="#336600"><a name="color"></a>Colors &amp; The RGB Model </font></font></h2>
+<p>Remember that everything in computers is ultimately represented as binary numbers. 
+We can specify other colors using the <strong>RGB model</strong>, which specifies a color with a red value, a green value, and a blue value (each called <strong>channels</strong>). For example, the red value is how much red we want in our color. In different graphics system, the individual color values might be represented in different ways. One very common way is to use 8 bits to each color value. This gives us 256 (2<sup>8</sup>) choices for each of the R, G, and B values, where choices range from 0 to 255. </p>
+<p>So, we could specify a color as follows: </p>
+<blockquote>
+  <table border="1" cellspacing="0" cellpadding="3">
+    <tr>
+      <th scope="col">Component</th>
+      <th scope="col">Minimum Value </th>
+      <th scope="col">Maximum Value </th>
+    </tr>
+    <tr>
+      <td><font color="#FF0000">Red Value </font></td>
+      <td>0 (no red) </td>
+      <td>255 (all red) </td>
+    </tr>
+    <tr>
+      <td><font color="#00FF00">Green Value</font></td>
+      <td>0 (no green) </td>
+      <td>255 (all green) </td>
+    </tr>
+    <tr>
+      <td><font color="#0000FF">Blue Value</font> </td>
+      <td>0 (no blue) </td>
+      <td>255 (all blue) </td>
+    </tr>
+  </table>
+</blockquote>
+<p>So, a color is represented as an ordered triple. </p>
+<p>Here are some examples: </p>
+<ul>
+  <li>Black is (0, 0, 0), i.e. the absence of all light, so 0 for all channels</li>
+  <li>White is (255, 255, 255), i.e. the presence of all light, so all channels are fully 
+      "on."</li>
+  <li>We could have two different channels fully "on," so, for example, (255, 0, 255) is magenta
+      </li>
+  <li>We could use values between 0 and 255, where larger means brighter, so (50, 0, 0) is a dark
+      red and (200, 0, 0) is a brighter red, while (0, 80, 0) and (0, 220, 0) are two different
+      shades of green.</li>
+  <li>We could combine the above ideas. If we were to change (0, 220, 0) to (0, 220, 220) or
+      (0, 220, 20), what would be different?</li>
+</ul>
+
+
+
+<p>Observe that 256 is also 16<sup>2</sup>, which means a component of color can also be represented as 2 hexadecimal digits. Going with this, FF == 255. In other graphics systems, a triple is represented by 6 hex digits, where the first two are the red value, the second two are the green value, and the last two are the blue value. Thus, <font color="#FF0000">FF0000 is red</font>, <font color="#00FF00">00FF00 is green</font>, and <font color="#0000FF">0000FF is blue</font>. We could combine colors: <font color="#FF00FF">FF00FF is magenta </font>. (Be careful, though, it's more involved than this.)</p>
+<p>In HTML, we can specify colors using hexadecimal numbers. </p>
+<p><strong>Problem: </strong>Recalling that 256 is 2<sup>8</sup>, how many different colors does the RGB model allow us to choose from?</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
